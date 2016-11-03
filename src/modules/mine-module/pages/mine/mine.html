@@ -7,12 +7,91 @@
 <ion-header>
 
     <ion-navbar color="calm">
+        <ion-buttons left>
+            <button ion-button icon-only (click)="goToView(personalSetting)">
+                <ion-icon name="ios-settings-outline"></ion-icon>
+            </button>
+        </ion-buttons>
         <ion-title>我的</ion-title>
+        <ion-buttons right>
+            <button ion-button icon-only (click)="goToView(personalSetting)">
+                <ion-icon name="ios-add-outline"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding-vertical>
+
+    <ion-list no-lines>
+        <button ion-item no-lines (click)="goToView(personInfo)">
+            <ion-thumbnail item-left>
+                <img src="assets/public/user-default.png">
+            </ion-thumbnail>
+            <h2>小明</h2>
+            <p>邮箱：zhaojmc@yonyou.com</p>
+            <p>电话：15311621031</p>
+        </button>
+    </ion-list>
+
+
+    <ion-list no-lines>
+
+        <ion-grid no-padding>
+            <ion-row no-padding>
+                <ion-col no-padding text-center center>
+                    <button ion-item detail-none no-lines text-center grid-button (click)="goToView(myBills)">
+                        <ion-icon style="color: #03c0ff" name="ios-bookmarks-outline"></ion-icon>
+                        <h3>我的单据</h3>
+                    </button>
+                </ion-col>
+                <ion-col no-padding text-center center>
+                    <button ion-item detail-none no-lines text-center grid-button
+                            (click)="goToView(consumptioAnalysis)">
+                        <ion-icon style="color: orange" name="ios-analytics-outline"></ion-icon>
+                        <h3>消费分析</h3>
+                    </button>
+                </ion-col>
+                <ion-col no-padding text-center center>
+                    <button ion-item detail-none no-lines text-center grid-button>
+                        <ion-icon style="color:lightgreen" name="ios-paper-outline"></ion-icon>
+                        <h3>我的审批</h3>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row no-padding>
+                <ion-col no-padding text-center center>
+                    <button ion-item detail-none no-lines text-center grid-button>
+                        <ion-icon style="color:coral" name="ios-car-outline"></ion-icon>
+                        <h3>滴滴出行</h3>
+                    </button>
+                </ion-col>
+                <ion-col no-padding text-center center>
+                    <button ion-item detail-none no-lines text-center grid-button>
+                        <ion-icon style="color: blueviolet;" name="ios-subway-outline"></ion-icon>
+                        <h3>携程商旅</h3>
+                    </button>
+                </ion-col>
+                <ion-col no-padding text-center center>
+                    <button ion-item detail-none no-lines text-center grid-button>
+                        <ion-icon style="color: #03c0ff;" name="ios-hand-outline"></ion-icon>
+                        <h3>收款认领</h3>
+                    </button>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col width-33 no-padding text-center center>
+                    <button ion-item detail-none no-lines text-center grid-button>
+                        <ion-icon style="color: #03c0ff;" name="ios-compass-outline"></ion-icon>
+                        <h3>其他测试</h3>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-list>
+
 
 </ion-content>

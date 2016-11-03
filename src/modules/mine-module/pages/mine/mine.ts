@@ -1,5 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
+import {PersonInfo} from "../person-info/person-info";
+import {PersonalSetting} from "../personal-setting/personal-setting";
+import {MyBills} from "../my-bills/my-bills";
+import {ConsumptioAnalysis} from "../consumptio-analysis/consumptio-analysis";
 
 /*
  Generated class for the Mine page.
@@ -13,11 +17,17 @@ import {NavController} from 'ionic-angular';
 })
 export class MinePage {
 
+    personInfo = PersonInfo;
+    personalSetting = PersonalSetting;
+    myBills = MyBills;
+    consumptioAnalysis = ConsumptioAnalysis;
+
     constructor(public navCtrl: NavController) {
     }
 
     ionViewDidLoad() {
         console.log('Hello Mine Page');
     }
+
 
 }

@@ -1,0 +1,96 @@
+<!--
+  Generated template for the FillBillForPayment page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="calm">
+        <ion-title>付款</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon name="logo-yen" style="color: orange;"></ion-icon>
+            </ion-label>
+            <ion-input type="number" placeholder="请输入报销金额" clearInput></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon name="ios-copy-outline" style="color: blueviolet;"></ion-icon>
+            </ion-label>
+            <ion-input type="number" placeholder="请输入付款单位" clearInput></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>
+                <ion-icon name="ios-paper-outline" style="color: greenyellow;"></ion-icon>
+            </ion-label>
+            <ion-input type="number" placeholder="请输入项目" clearInput></ion-input>
+        </ion-item>
+
+        <ion-row no-padding>
+            <ion-col no-padding width-50 offset-25>
+                <ion-item>
+                    <ion-label color="calm">
+                        <ion-icon name="md-calendar"></ion-icon>
+                    </ion-label>
+                    <ion-datetime cancelText="取消" doneText="确定" displayFormat="YYYY-MM-DD"
+                                  pickerFormat="YYYY-MM-DD"
+                                  [(ngModel)]="dateTime"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-item-divider no-lines style="background-color: transparent;">
+            <p>支付方式：</p>
+        </ion-item-divider>
+
+        <ion-card style="margin-top: 0;">
+
+            <dropdown [dataList]="payTypeList" [(value)]="payType"></dropdown>
+
+        </ion-card>
+
+
+        <ion-item>
+            <ion-label color="dark">
+                备注
+            </ion-label>
+            <ion-input type="text" placeholder="请输入备注" clearInput></ion-input>
+        </ion-item>
+
+
+    </ion-list>
+
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar no-border color="light" style="background-color: #fff;">
+        <ion-grid no-padding>
+            <ion-row no-padding>
+                <ion-col width-33 center no-padding>
+                    <button ion-button clear full color="calm" (click)="saveBill()">保存</button>
+                </ion-col>
+                <ion-col width-33 center no-padding>
+                    <button mode="ios" icon-only ion-button clear full color="calm">
+                        <ion-icon name="ios-ionic"></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col width-33 center no-padding>
+                    <button ion-button clear full color="calm" (click)="saveBill()">报帐</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

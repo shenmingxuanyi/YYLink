@@ -1,0 +1,80 @@
+<!--
+  Generated template for the FillBillForCommunication page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="calm">
+        <ion-title>通讯</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <ion-list style="margin-bottom: 0;">
+        <ion-item>
+            <ion-label>
+                <ion-icon name="logo-yen" style="color: orange;"></ion-icon>
+            </ion-label>
+            <ion-input type="number" placeholder="请输入报销金额" clearInput></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <ion-list no-lines style="margin-bottom: 0;" radio-group [(ngModel)]="amount">
+        <ion-item-divider no-lines style="background-color: transparent;">
+            <p>金额</p>
+        </ion-item-divider>
+
+        <ion-row no-padding>
+
+            <ion-col width-33>
+                <ion-item no-lines style="border-bottom: 1px solid #dedede;">
+                    <ion-label>30</ion-label>
+                    <ion-radio color="calm" item-left value="30"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col width-33>
+                <ion-item no-lines style="border-bottom: 1px solid #dedede;">
+                    <ion-label>50</ion-label>
+                    <ion-radio color="calm" item-left value="50"></ion-radio>
+                </ion-item>
+            </ion-col>
+            <ion-col width-33>
+                <ion-item no-lines style="border-bottom: 1px solid #dedede;">
+                    <ion-label>100</ion-label>
+                    <ion-radio color="calm" item-left value="100"></ion-radio>
+                </ion-item>
+            </ion-col>
+
+        </ion-row>
+
+    </ion-list>
+
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar no-border color="light" style="background-color: #fff;">
+        <ion-grid no-padding>
+            <ion-row no-padding>
+                <ion-col width-33 center no-padding>
+                    <button ion-button clear full color="calm" (click)="saveBill()">保存</button>
+                </ion-col>
+                <ion-col width-33 center no-padding>
+                    <button mode="ios" icon-only ion-button clear full color="calm">
+                        <ion-icon name="ios-ionic"></ion-icon>
+                    </button>
+                </ion-col>
+                <ion-col width-33 center no-padding>
+                    <button ion-button clear full color="calm" (click)="saveBill()">报帐</button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-toolbar>
+</ion-footer>

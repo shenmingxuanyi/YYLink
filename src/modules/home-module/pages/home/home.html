@@ -1,5 +1,101 @@
 <ion-content>
 
-    <button ion-button block (click)="open()">open</button>
+
+    <ion-slides style="height: 59vw" [options]="slidesOptions">
+        <ion-slide>
+            <img src="assets/home/banner/1.png">
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/home/banner/2.png">
+        </ion-slide>
+        <ion-slide>
+            <img src="assets/home/banner/3.png">
+        </ion-slide>
+    </ion-slides>
+
+
+    <ion-grid no-padding>
+        <ion-row>
+            <ion-col no-padding text-center>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForTravel)">
+
+                    <ion-icon color="danger" name="ios-car"></ion-icon>
+                    <h3>出行</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding text-center>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForHotel)">
+
+                    <ion-icon color="primary" name="ios-home"></ion-icon>
+                    <h3>住宿</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForRestaurant)">
+
+                    <ion-icon color="secondary" name="ios-pizza"></ion-icon>
+                    <h3>餐饮</h3>
+
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForPurchase)">
+
+                    <ion-icon color="calm" name="ios-basket"></ion-icon>
+                    <h3>采购</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForPayment)">
+
+                    <ion-icon style="color: orange;" name="logo-yen"></ion-icon>
+                    <h3>付款</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none
+                        (click)="goToView(fillBillForReceivables)">
+
+                    <ion-icon style="color: blueviolet" name="logo-yen"></ion-icon>
+                    <h3>收款</h3>
+
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none
+                        (click)="goToView(fillBillForCommunication)">
+
+                    <ion-icon color="primary" name="ios-phone-portrait"></ion-icon>
+                    <h3>通讯</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForSale)">
+
+                    <ion-icon color="favorite" name="ios-cart"></ion-icon>
+                    <h3>销售</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForOther)">
+
+                    <ion-icon color="calm" name="ios-keypad"></ion-icon>
+                    <h3>其他</h3>
+
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 
 </ion-content>
