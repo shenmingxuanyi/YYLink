@@ -1,28 +1,26 @@
 import {NgModule} from '@angular/core';
 import {IonicApp, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
-import {HomePage} from '../pages/home/home';
 import {TabsPage} from '../pages/tabs/tabs';
-import {MinePage} from "../pages/mine/mine";
-import {BillPage} from "../pages/bill/bill";
+import {BillModule} from "../modules/bill-module/bill.module";
+import {MineModule} from "../modules/mine-module/mine.module";
+import {HomeModule} from "../modules/home-module/home.module";
+
 
 @NgModule({
     declarations: [
         MyApp,
-        MinePage,
-        BillPage,
-        HomePage,
         TabsPage
     ],
     imports: [
-        IonicModule.forRoot(MyApp)
+        IonicModule.forRoot(MyApp),
+        BillModule,
+        MineModule,
+        HomeModule
     ],
     bootstrap: [IonicApp],
     entryComponents: [
         MyApp,
-        BillPage,
-        MinePage,
-        HomePage,
         TabsPage
     ],
     providers: []
