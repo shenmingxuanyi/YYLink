@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
-import {HomePage} from "../../modules/home-module/home/home";
-import {BillPage} from "../../modules/bill-module/bill/bill";
-import {MinePage} from "../../modules/mine-module/mine/mine";
+import {HomePage} from "../../modules/home-module/pages/home/home";
+import {BillPage} from "../../modules/bill-module/pages/bill/bill";
+import {MinePage} from "../../modules/mine-module/pages/mine/mine";
 
 
 @Component({

@@ -3,21 +3,21 @@
  */
 import {NgModule} from '@angular/core';
 import {IonicApp, IonicModule} from 'ionic-angular';
-import {HomePage} from "./home/home";
+import {MinePage} from "../pages/mine/mine";
 
 
 @NgModule({
     declarations: [
-        HomePage
+        MinePage
     ],
     imports: [
-        IonicModule.forRoot(HomePage)
+        IonicModule.forRoot(MinePage)
     ],
     bootstrap: [IonicApp],
     entryComponents: [
-        HomePage
+        MinePage
     ],
     providers: []
 })
-export class HomeModule {
+export class MineModule {
 }

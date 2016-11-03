@@ -3,7 +3,7 @@
  */
 import {NgModule} from '@angular/core';
 import {IonicApp, IonicModule} from 'ionic-angular';
-import {BillPage} from "./bill/bill";
+import {BillPage} from "../pages/bill/bill";
 
 
 @NgModule({

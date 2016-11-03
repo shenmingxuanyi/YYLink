@@ -2,9 +2,9 @@ import {NgModule} from '@angular/core';
 import {IonicApp, IonicModule} from 'ionic-angular';
 import {MyApp} from './app.component';
 import {TabsPage} from '../pages/tabs/tabs';
-import {BillModule} from "../modules/bill-module/bill.module";
-import {MineModule} from "../modules/mine-module/mine.module";
-import {HomeModule} from "../modules/home-module/home.module";
+import {BillModule} from "../modules/bill-module/app/bill.module";
+import {MineModule} from "../modules/mine-module/app/mine.module";
+import {HomeModule} from "../modules/home-module/app/home.module";
 
 
 @NgModule({
