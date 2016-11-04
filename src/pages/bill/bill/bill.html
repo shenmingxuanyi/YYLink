@@ -1,0 +1,174 @@
+<!--
+  Generated template for the Bill page.
+
+ bar-button-md bar-button-menutoggle bar-button-menutoggle-md
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-datetime #_DATETIME_COMPONENT style="display: none;" displayFormat="YYYY-MM" min="1990" max="2099-12"
+              doneText="确定"
+              cancelText="取消"
+              [(ngModel)]="filterDate">
+</ion-datetime>
+
+<ion-header>
+
+
+    <ion-navbar color="calm">
+
+        <ion-buttons left [hidden]="'date'!=billViewFilterType">
+
+            <button ion-button light icon-only class="bar-button-menutoggle"
+                    (click)="openDataTime(_DATETIME_COMPONENT)">
+                <ion-icon name="ios-calendar-outline"></ion-icon>
+                <span style="font-size: 1rem;vertical-align: middle;">
+                （{{filterDate}}）
+                </span>
+            </button>
+
+        </ion-buttons>
+
+
+        <ion-title>
+            报帐
+        </ion-title>
+
+        <ion-buttons right>
+            <button ion-button light icon-only (click)="showBillViewFilterPopover($event)">
+                <ion-icon name="ios-funnel-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+
+    </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content padding-vertical class="content-view">
+
+    <ion-refresher (ionRefresh)="doRefreshOfDateType($event)">
+        <ion-refresher-content pullingText="下拉刷新" refreshingText="亲爱的小主，我正在努力刷新..."></ion-refresher-content>
+    </ion-refresher>
+
+
+    <div [ngSwitch]="billViewFilterType">
+        <div *ngSwitchCase="'date'">
+
+            <div *ngFor="let billDataItem of billDataListOfDateType;let i=index;">
+                <p *ngIf="billDataItem.list.length>0" text-center>{{billDataItem.date}}</p>
+
+                <ion-list>
+                    <ion-item-sliding *ngFor="let billData of billDataItem.list;let j=index;">
+                        <ion-item>
+                            <ion-icon [name]="billData.icon" item-left color="calm"></ion-icon>
+
+                            <h2>
+                                {{billData.type}}
+                                <ion-badge style="margin-left: .1rem;margin-right: .1rem;"
+                                           *ngFor="let badge of billData.badges" color="calm">
+                                    {{badge}}
+                                </ion-badge>
+                            </h2>
+
+                            <p>{{billData.info}}</p>
+
+                            <ion-icon color="calm" item-right><span
+                                    style="font-size: 1.6rem;">{{billData.amount}}</span>
+                            </ion-icon>
+                        </ion-item>
+
+                        <ion-item-options side="right">
+                            <button ion-button icon-left color="danger" (click)="deleteBillOfDate(i,j)">
+                                <ion-icon name="ios-trash-outline"></ion-icon>
+                                删除
+                            </button>
+                            <button ion-button icon-left color="calm">
+                                <ion-icon name="ios-paper-outline"></ion-icon>
+                                报帐
+                            </button>
+                        </ion-item-options>
+
+                    </ion-item-sliding>
+                </ion-list>
+
+            </div>
+
+            <ion-infinite-scroll (ionInfinite)="doInfiniteOfFilterDate($event)">
+                <ion-infinite-scroll-content loadingText="亲爱的小主，我正在努力家在..."></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+
+        </div>
+        <div *ngSwitchCase="'label'">
+
+            <ion-list *ngFor="let billDataItem of billDataListOfLabelType;let i=index;">
+
+                <ion-item>
+                    <span calm>{{billDataItem.type}}</span>
+                    <button ion-button outline item-right small color="calm" (click)="buttonClick()">
+                        报帐
+                    </button>
+                    <button ion-button outline item-right small color="calm" (click)="deleteAllBillOfLabel(i)">
+                        更多
+                    </button>
+
+                </ion-item>
+
+                <ion-item no-lines style="background-color: #fff;">
+                    <ion-icon item-left>
+                        <span style="font-size: 1.6rem;color: #7f7f7f">支出</span>
+                    </ion-icon>
+                    {{billDataItem.amount}}
+                </ion-item>
+                <ion-item no-lines style="background-color: #fff;">
+                    <ion-icon item-left>
+                        <span style="font-size: 1.6rem;color: #7f7f7f">地点</span>
+                    </ion-icon>
+                    {{billDataItem.position}}
+                </ion-item>
+
+                <ion-item style="background-color: #fff;">
+                    <ion-icon item-left>
+                        <span style="font-size: 1.6rem;color: #7f7f7f">日期</span>
+                    </ion-icon>
+                    {{billDataItem.date}}
+                </ion-item>
+
+                <ion-item-sliding *ngFor="let billData of billDataItem.list;let j=index;">
+                    <ion-item>
+                        <ion-icon [name]="billData.icon" item-left color="calm"></ion-icon>
+
+                        <h2>
+                            {{billData.type}}
+                        </h2>
+
+                        <p>{{billData.info}}</p>
+
+                        <ion-icon color="calm" item-right><span
+                                style="font-size: 1.6rem;">{{billData.amount}}</span>
+                        </ion-icon>
+                    </ion-item>
+
+                    <ion-item-options side="right">
+                        <button ion-button icon-left color="danger" (click)="deleteBillOfLabel(i,j)">
+                            <ion-icon name="ios-trash-outline"></ion-icon>
+                            删除
+                        </button>
+                    </ion-item-options>
+
+                </ion-item-sliding>
+
+            </ion-list>
+
+            <ion-infinite-scroll (ionInfinite)="doInfiniteOfFilterLabel($event)">
+                <ion-infinite-scroll-content loadingText="亲爱的小主，我正在努力家在..."></ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+
+        </div>
+
+    </div>
+
+
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-list radio-group (ionChange)="close();" [(ngModel)]="billViewFilterType">
+    <ion-list-header>
+        显示方式
+    </ion-list-header>
+
+    <ion-item>
+        <ion-label>按时间显示</ion-label>
+        <ion-radio value="date"></ion-radio>
+    </ion-item>
+
+
+    <ion-item>
+        <ion-label>按标签显示</ion-label>
+        <ion-radio value="label"></ion-radio>
+    </ion-item>
+
+
+</ion-list>
