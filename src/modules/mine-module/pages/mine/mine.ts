@@ -29,5 +29,9 @@ export class MinePage {
         console.log('Hello Mine Page');
     }
 
+    goToView(view: any) {
+        this.navCtrl.parent.parent.push(view);
+    }
+
 
 }
