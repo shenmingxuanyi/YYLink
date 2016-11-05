@@ -26,16 +26,23 @@ import {BeginnerHelpPage} from "../pages/mine/personal-setting/beginner-help/beg
 import {LabelManagerPage} from "../pages/mine/personal-setting/label-manager/label-manager";
 import {ComplaintSuggestPage} from "../pages/mine/personal-setting/complaint-suggest/complaint-suggest";
 import {BillViewFilterPopover} from "../pages/bill/bill-view-filter-popover/bill-view-filter-popover";
+import {RegisterForSetPasswordPage} from "../pages/security/register-for-set-password/register-for-set-password";
+import {ForgetPasswordForSetPasswordPage} from "../pages/security/forget-password-for-set-password/forget-password-for-set-password";
+import {ForgetPasswordPage} from "../pages/security/forget-password/forget-password";
+import {RegisterPage} from "../pages/security/register/register";
+import {LoginPage} from "../pages/security/login/login";
 
-
+//安全－页面
+const SECURITY_PAGE = [LoginPage, RegisterPage, ForgetPasswordPage, ForgetPasswordForSetPasswordPage, RegisterForSetPasswordPage];
 //首页－页面
 const HOME_PAGES = [HomePage, FillBillForTravelPage, FillBillForCommunicationPage, FillBillForHotelPage, FillBillForOtherPage, FillBillForPaymentPage, FillBillForPurchasePage, FillBillForReceivablesPage, FillBillForRestaurantPage, FillBillForSalePage];
 //报帐－页面
-const BILL_PAGES = [BillPage,BillViewFilterPopover];
+const BILL_PAGES = [BillPage, BillViewFilterPopover];
 //我的－页面
 const MINE_PAGES = [MinePage, PersonalSettingPage, PersonInfoPage, MyBillsPage, ConsumptioAnalysisPage, OptionIntroducePage, BeginnerHelpPage, LabelManagerPage, ComplaintSuggestPage];
+
 //页面
-const PAGES = [TabsPage, ...HOME_PAGES, ...BILL_PAGES, ...MINE_PAGES];
+const PAGES = [TabsPage, ...HOME_PAGES, ...BILL_PAGES, ...MINE_PAGES, ...SECURITY_PAGE];
 //管道
 const PIPES = [];
 //组件

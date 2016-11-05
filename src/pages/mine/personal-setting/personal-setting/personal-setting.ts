@@ -4,6 +4,7 @@ import {OptionIntroducePage} from "../option-introduce/option-introduce";
 import {BeginnerHelpPage} from "../beginner-help/beginner-help";
 import {LabelManagerPage} from "../label-manager/label-manager";
 import {ComplaintSuggestPage} from "../complaint-suggest/complaint-suggest";
+import {LoginPage} from "../../../security/login/login";
 
 /*
  Generated class for the PersonalSetting page.
@@ -47,7 +48,7 @@ export class PersonalSettingPage {
     }
 
     logOut() {
-        // this.navCtrl.setRoot(Login)
+        this.navCtrl.setRoot(LoginPage)
     }
 
 }

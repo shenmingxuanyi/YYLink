@@ -1,0 +1,41 @@
+<ion-content padding>
+
+    <form class="login-form" (submit)="login()" padding-horizontal>
+
+        <ion-list style="margin-bottom:0" no-lines>
+            <ion-item class="input-has-focus login-item">
+                <ion-label>
+                    <ion-icon name="md-person" color="calm"></ion-icon>
+                </ion-label>
+                <ion-input type="number" placeholder="请输入手机号" clearInput></ion-input>
+            </ion-item>
+        </ion-list>
+
+        <ion-list no-margin style="margin-bottom:16px" no-lines>
+
+            <ion-item class="input-has-focus login-item">
+                <ion-label>
+                    <ion-icon name="md-lock" color="calm"></ion-icon>
+                </ion-label>
+                <ion-input type="password" placeholder="请输入密码" clearInput></ion-input>
+            </ion-item>
+
+        </ion-list>
+
+        <button type="submit" ion-button block color="calm">登录</button>
+
+    </form>
+
+    <ion-row>
+        <ion-col text-left>
+
+            <button model="ios" ion-button clear color="calm" (click)="forgetPassword();">忘记密码？</button>
+
+        </ion-col>
+        <ion-col text-right>
+
+            <button ion-button clear color="calm" (click)="register()">注册</button>
+
+        </ion-col>
+    </ion-row>
+</ion-content>
