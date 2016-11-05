@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content class="light">
 
 
     <ion-slides style="height: 59vw" [options]="slidesOptions">
@@ -81,7 +81,7 @@
             <ion-col no-padding>
                 <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForSale)">
 
-                    <ion-icon color="favorite" name="ios-cart"></ion-icon>
+                    <ion-icon color="primary" name="ios-cart"></ion-icon>
                     <h3>销售</h3>
 
                 </button>
@@ -96,6 +96,75 @@
             </ion-col>
         </ion-row>
     </ion-grid>
+
+
+    <ion-list no-lines>
+
+        <ion-list-header>
+            个人业务
+        </ion-list-header>
+        <ion-row>
+            <ion-col no-padding text-center>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForTravel)">
+
+                    <ion-icon color="danger" name="ios-car"></ion-icon>
+                    <h3>出行</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding text-center>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForHotel)">
+
+                    <ion-icon color="primary" name="ios-home"></ion-icon>
+                    <h3>住宿</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForRestaurant)">
+
+                    <ion-icon color="secondary" name="ios-pizza"></ion-icon>
+                    <h3>餐饮</h3>
+
+                </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-list>
+
+    <ion-list no-lines>
+
+        <ion-list-header>
+            个人业务
+        </ion-list-header>
+        <ion-row>
+            <ion-col no-padding text-center>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForTravel)">
+
+                    <ion-icon color="danger" name="ios-car"></ion-icon>
+                    <h3>出行</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding text-center>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForHotel)">
+
+                    <ion-icon color="primary" name="ios-home"></ion-icon>
+                    <h3>住宿</h3>
+
+                </button>
+            </ion-col>
+            <ion-col no-padding>
+                <button grid-button no-lines ion-item text-center detail-none (click)="goToView(fillBillForRestaurant)">
+
+                    <ion-icon color="secondary" name="ios-pizza"></ion-icon>
+                    <h3>餐饮</h3>
+
+                </button>
+            </ion-col>
+        </ion-row>
+
+    </ion-list>
 
 
 </ion-content>

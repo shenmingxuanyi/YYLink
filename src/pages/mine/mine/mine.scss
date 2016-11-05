@@ -1,3 +1,17 @@
 page-mine {
 
+  [grid-button] {
+
+    padding-top: .6rem;
+    padding-bottom: .5rem;
+
+    &.activated {
+      background-color: rgba(0, 0, 0, .05);
+    }
+
+    ion-icon {
+      font-size: 3rem;
+    }
+  }
+
 }
