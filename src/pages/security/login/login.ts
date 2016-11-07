@@ -3,6 +3,8 @@ import {NavController} from 'ionic-angular';
 import {TabsPage} from "../../tabs/tabs";
 import {ForgetPasswordPage} from "../forget-password/forget-password";
 import {RegisterPage} from "../register/register";
+import {HttpResourceService} from "../../../providers/http-resource-service";
+import {Http} from "@angular/http";
 
 
 /*
@@ -17,7 +19,8 @@ import {RegisterPage} from "../register/register";
 })
 export class LoginPage {
 
-    constructor(public navCtrl: NavController) {
+    constructor(public navCtrl: NavController, public httpResourceService: HttpResourceService, public http: Http) {
+
     }
 
     ionViewDidLoad() {
@@ -25,7 +28,9 @@ export class LoginPage {
     }
 
     login() {
-        this.navCtrl.setRoot(TabsPage);
+        // this.http.get("http://www.baidu.com").subscribe();
+        this.httpResourceService.get('http://www.baidu.com/').subscribe();
+        // this.navCtrl.setRoot(TabsPage);
     }
 
     forgetPassword() {
