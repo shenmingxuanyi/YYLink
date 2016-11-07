@@ -53,7 +53,6 @@ export class HttpResourceService {
         this.searchParameters = new URLSearchParams("phone=15311621031&token=XXXX-XXXX-XXXX");
     }
 
-
     private _httpPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
 
         let loading = null;
@@ -99,59 +98,59 @@ export class HttpResourceService {
     }
 
     get(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions, toastOptions?: ToastOptions): Observable<Response> {
-        return this.request(new Request({method: RequestMethod.Get, url: url}), options, loadingOptions, toastOptions);
+        return this._httpPoxy(this.http.get(url, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
     }
 
 
     post(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this.request(new Request({
-            method: RequestMethod.Post,
-            url: url,
-            body: body
-        }), options, loadingOptions, toastOptions);
+        return this._httpPoxy(this.http.post(url, body, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
     }
 
 
     put(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this.request(new Request({
-            method: RequestMethod.Put,
-            url: url,
-            body: body
-        }), options, loadingOptions, toastOptions);
+        return this._httpPoxy(this.http.put(url, body, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
 
     }
 
 
     delete(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this.request(new Request({
-            method: RequestMethod.Delete,
-            url: url
-        }), options, loadingOptions, toastOptions);
-
+        return this._httpPoxy(this.http.delete(url, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
     }
 
 
     patch(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this.request(new Request({
-            method: RequestMethod.Patch,
-            url: url,
-            body: body
-        }), options, loadingOptions, toastOptions);
-
+        return this._httpPoxy(this.http.patch(url, body, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
     }
 
 
     head(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this.request(new Request({method: RequestMethod.Head, url: url}), options, loadingOptions, toastOptions);
+        return this._httpPoxy(this.http.head(url, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
     }
 
 
     options(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this.request(new Request({
-            method: RequestMethod.Options,
-            url: url
-        }), options, loadingOptions, toastOptions);
-
+        return this._httpPoxy(this.http.options(url, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
     }
 
 }
