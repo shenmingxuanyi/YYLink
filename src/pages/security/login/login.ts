@@ -1,25 +1,23 @@
 import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
-import {TabsPage} from "../../tabs/tabs";
 import {ForgetPasswordPage} from "../forget-password/forget-password";
 import {RegisterPage} from "../register/register";
 import {HttpResourceService} from "../../../providers/http-resource-service";
 import {Http} from "@angular/http";
+import {RESTFUL_RESOURCE_ENDPOINT, RESTFUL_RESOURCES} from "../../../configs/resource.config";
+import {TabsPage} from "../../tabs/tabs";
 
-
-/*
- Generated class for the Login page.
-
- See http://ionicframework.com/docs/v2/components/#navigation for more info on
- Ionic pages and navigation.
- */
 @Component({
     selector: 'page-login',
     templateUrl: 'login.html'
 })
 export class LoginPage {
 
-    constructor(public navCtrl: NavController, public httpResourceService: HttpResourceService, public http: Http) {
+    phone: string;
+
+    password: string;
+
+    constructor(public navCtrl: NavController, public httpResourceService: HttpResourceService) {
 
     }
 
@@ -28,9 +26,17 @@ export class LoginPage {
     }
 
     login() {
-        // this.http.get("http://www.baidu.com").subscribe();
-        this.httpResourceService.get('http://www.baidu.com/').subscribe();
-        // this.navCtrl.setRoot(TabsPage);
+        let parameters = {
+            phone: this.phone,
+            password: this.password
+        };
+
+        this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGIN, parameters)
+            .subscribe((data: any)=> {
+                if ('0' == data.code) {
+                    this.navCtrl.setRoot(TabsPage);
+                }
+            });
     }
 
     forgetPassword() {

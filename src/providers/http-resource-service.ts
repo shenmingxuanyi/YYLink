@@ -5,6 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/finally';
 import {Observable} from "rxjs";
 import {LoadingController, ToastController, LoadingOptions, ToastOptions} from "ionic-angular";
+import {RESTFUL_RESOURCE_ENDPOINT} from "../configs/resource.config";
 
 
 export const HTTP_RESOURCE_VIEW_CONFIG_CONSTANT = {
@@ -35,7 +36,6 @@ export class HttpResourceService {
 
     searchParameters: URLSearchParams;
 
-
     private _loadingOptions: LoadingOptions;
 
     private _toastOptions: ToastOptions;
@@ -44,6 +44,11 @@ export class HttpResourceService {
         console.log('Constructor HttpResourceService Provider');
         this._loadingOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.LOADING_OPTIONS;
         this._toastOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS;
+        this.headers = new Headers({
+            'Accept': 'application/json',
+            "Content-Type": 'application/json',
+            "Access-Control-Allow-Origin": RESTFUL_RESOURCE_ENDPOINT
+        });
     }
 
     request(url: string | Request, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {

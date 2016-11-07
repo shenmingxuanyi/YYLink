@@ -7,7 +7,8 @@
                 <ion-label>
                     <ion-icon name="md-person" color="calm"></ion-icon>
                 </ion-label>
-                <ion-input type="number" placeholder="请输入手机号" clearInput></ion-input>
+                <ion-input [(ngModel)]="phone" [ngModelOptions]="{standalone: true}" type="number" placeholder="请输入手机号"
+                           clearInput></ion-input>
             </ion-item>
         </ion-list>
 
@@ -17,7 +18,8 @@
                 <ion-label>
                     <ion-icon name="md-lock" color="calm"></ion-icon>
                 </ion-label>
-                <ion-input type="password" placeholder="请输入密码" clearInput></ion-input>
+                <ion-input [(ngModel)]="password" [ngModelOptions]="{standalone: true}" type="password"
+                           placeholder="请输入密码" clearInput></ion-input>
             </ion-item>
 
         </ion-list>

@@ -9,12 +9,12 @@ export const STATIC_RESOURCES = {};
 export const STATIC_RESTFUL_RESOURCE_ENDPOINT = './assets/restful/';
 
 //远程资源点
-export const RESTFUL_RESOURCE_ENDPOINT = 'http://10.1.76.34:8080/';
+export const RESTFUL_RESOURCE_ENDPOINT = 'http://10.1.76.36:8080/';
 
 //资源集合
 export const RESTFUL_RESOURCES = {
     SECURITY: {
-        LOGIN: '',
+        LOGIN: 'user/loginNormally',
         LOGOUT: '',
         FORGET_PASSWORD: '',
         FORGET_PASSWORD_TO_SET_PASSWORD: '',
