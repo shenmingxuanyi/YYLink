@@ -53,7 +53,8 @@ export class HttpResourceService {
         this.searchParameters = new URLSearchParams("phone=15311621031&token=XXXX-XXXX-XXXX");
     }
 
-    request(url: string | Request, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
+
+    private _httpPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
 
         let loading = null;
 
@@ -62,7 +63,7 @@ export class HttpResourceService {
             loading.present();
         }
 
-        return this.http.request(url, Object.assign({headers: this.headers, search: this.searchParameters}, options))
+        return observable
             .map((response)=> {
                 let responseJson = response.json();
                 if ('0' != responseJson['code']) {
@@ -86,6 +87,15 @@ export class HttpResourceService {
                     }
                 }
             });
+    }
+
+    request(url: string | Request, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
+
+        return this._httpPoxy(this.http.request(url, Object.assign({
+            headers: this.headers,
+            search: this.searchParameters
+        }, options)), loadingOptions, toastOptions);
+
     }
 
     get(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions, toastOptions?: ToastOptions): Observable<Response> {
