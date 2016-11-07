@@ -49,6 +49,8 @@ export class HttpResourceService {
             "Content-Type": 'application/json',
             "Access-Control-Allow-Origin": RESTFUL_RESOURCE_ENDPOINT
         });
+
+        this.searchParameters = new URLSearchParams("phone=15311621031&token=XXXX-XXXX-XXXX");
     }
 
     request(url: string | Request, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
@@ -94,16 +96,18 @@ export class HttpResourceService {
     post(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
         return this.request(new Request({
             method: RequestMethod.Post,
-            url: url
-        }), Object.assign({body: body}, options), loadingOptions, toastOptions);
+            url: url,
+            body: body
+        }), options, loadingOptions, toastOptions);
     }
 
 
     put(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
         return this.request(new Request({
             method: RequestMethod.Put,
-            url: url
-        }), Object.assign({body: body}, options), loadingOptions, toastOptions);
+            url: url,
+            body: body
+        }), options, loadingOptions, toastOptions);
 
     }
 
@@ -120,8 +124,9 @@ export class HttpResourceService {
     patch(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
         return this.request(new Request({
             method: RequestMethod.Patch,
-            url: url
-        }), Object.assign({body: body}, options), loadingOptions, toastOptions);
+            url: url,
+            body: body
+        }), options, loadingOptions, toastOptions);
 
     }
 

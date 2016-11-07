@@ -3,9 +3,12 @@ import {NavController} from 'ionic-angular';
 import {ForgetPasswordPage} from "../forget-password/forget-password";
 import {RegisterPage} from "../register/register";
 import {HttpResourceService} from "../../../providers/http-resource-service";
-import {Http} from "@angular/http";
 import {RESTFUL_RESOURCE_ENDPOINT, RESTFUL_RESOURCES} from "../../../configs/resource.config";
 import {TabsPage} from "../../tabs/tabs";
+import  "cryptico-js"
+import {RSA_PUBLIC_KEY} from "../../../configs/security.config";
+
+declare var cryptico: any;
 
 @Component({
     selector: 'page-login',
@@ -26,9 +29,12 @@ export class LoginPage {
     }
 
     login() {
+        console.log(cryptico);
+        console.log(RSA_PUBLIC_KEY)
+        console.log(cryptico.encrypt(this.password, RSA_PUBLIC_KEY))
         let parameters = {
             phone: this.phone,
-            password: this.password
+            password: cryptico.encrypt(this.password, RSA_PUBLIC_KEY)
         };
 
         this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGIN, parameters)

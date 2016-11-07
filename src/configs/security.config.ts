@@ -1,0 +1,5 @@
+/**
+ * Created by zhaojunming on 16/11/7.
+ */
+
+export const RSA_PUBLIC_KEY = `MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDF6t45yNFrfzoUmqbv4O7dnVtkQUpQVb5L16MHpBkl35bFmGWn68O4Q0GEVhghXrrhWmcw8l9MVWHp4fba7PynBSZYzQmMW474MQybb0zg5gYhF7+es7D4UPiOJKlJreU0GXydAoH/lnnTlu+Bqnwq7XvKluH2lQQXh0Tu2WfswQIDAQAB`
