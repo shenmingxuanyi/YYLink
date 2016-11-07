@@ -28,10 +28,9 @@ export class LoginPage {
     }
 
     login() {
-        this.navCtrl.setRoot(TabsPage);
+
         let encrypt = new JSEncrypt();
         encrypt.setPublicKey(RSA_PUBLIC_KEY);
-        var encrypted = encrypt.encrypt(this.password);
 
         let parameters = {
             phone: this.phone,
