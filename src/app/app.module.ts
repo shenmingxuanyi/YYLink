@@ -31,6 +31,7 @@ import {ForgetPasswordForSetPasswordPage} from "../pages/security/forget-passwor
 import {ForgetPasswordPage} from "../pages/security/forget-password/forget-password";
 import {RegisterPage} from "../pages/security/register/register";
 import {LoginPage} from "../pages/security/login/login";
+import {HttpResourceService} from "../providers/http-resource-service";
 
 //安全－页面
 const SECURITY_PAGE = [LoginPage, RegisterPage, ForgetPasswordPage, ForgetPasswordForSetPasswordPage, RegisterForSetPasswordPage];
@@ -50,7 +51,7 @@ const COMPONENTS = [DropownComponent];
 //指令
 const DIRECTIVES = [];
 //服务
-const PROVIDERS = [];
+const PROVIDERS = [HttpResourceService];
 
 const MODULES = [];
 

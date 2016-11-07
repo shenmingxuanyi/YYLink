@@ -5,7 +5,7 @@
 export const PLATFORMS_CONFIG_CONSTANT = {
     platforms: {
         ios: {
-            backButtonText: '  ',
+            backButtonText: '返回',
         }
     }
 };
