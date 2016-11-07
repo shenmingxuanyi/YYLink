@@ -27,7 +27,7 @@ export const HTTP_RESOURCE_VIEW_CONFIG_CONSTANT = {
         dismissOnPageChange: null,
         position: 'bottom'
     }
-}
+};
 
 @Injectable()
 export class HttpResourceService {
