@@ -4,6 +4,8 @@ import {StatusBar, Splashscreen} from 'ionic-native';
 import {TabsPage} from '../pages/tabs/tabs';
 import {LoginPage} from "../pages/security/login/login";
 import {SYSTEM_EVENTS} from "../configs/event.config";
+import {UserService} from "../providers/user-service/user-service";
+import {RESPONSE_TYPE} from "../configs/http-resource.config";
 
 
 @Component({
@@ -15,7 +17,7 @@ export class MyApp implements OnInit,OnDestroy {
 
     rootPage: any = TabsPage;
 
-    constructor(platform: Platform, public events: Events) {
+    constructor(platform: Platform, public events: Events, public userService: UserService) {
         platform.ready().then(() => {
             StatusBar.styleDefault();
             Splashscreen.hide();
@@ -25,7 +27,37 @@ export class MyApp implements OnInit,OnDestroy {
 
 
     initialize() {
+        this.userService.getUserInfo()
+            .then(userInfo=> {
+                if (userInfo) {
+                    this.userService.getUserTokenInfo()
+                        .then(userTokenInfo=> {
+                            if (userTokenInfo) {
+                                this.userService.setHttpAuthority(userTokenInfo);
+                                this.userService.queryUserInfo()
+                                    .subscribe((data: any)=> {
+                                        if (RESPONSE_TYPE.SUCCESS == data.code) {
 
+                                        } else {
+                                            this.rootPage = LoginPage;
+                                        }
+                                    }, ()=> {
+                                        this.rootPage = LoginPage;
+                                    });
+                            } else {
+                                this.rootPage = LoginPage;
+                            }
+                        })
+                        .catch(()=> {
+                            this.rootPage = LoginPage;
+                        })
+                } else {
+                    this.rootPage = LoginPage;
+                }
+            })
+            .catch(()=> {
+                this.rootPage = LoginPage;
+            })
     }
 
     ngOnInit() {

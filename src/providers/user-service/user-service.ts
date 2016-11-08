@@ -80,9 +80,9 @@ export class UserService {
         this.events.publish(SYSTEM_EVENTS.SECURITY.LOGOUT, null);
     }
 
-    // queryUserInfo(): Observable<Response> {
-    //     this.httpResourceService.post(RESTFUL_RESOURCES_E)
-    // }
+    queryUserInfo(): Observable<Response> {
+        return this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.USER_INFO, {});
+    }
 
     setUserInfo(userInfo) {
         this.userInfo = userInfo;
@@ -129,8 +129,7 @@ export class UserService {
             }
             if (userToken.cookie && userToken.accessInfo) {
                 this.httpResourceService.requestOptionsArgs.search = this.httpResourceService.requestOptionsArgs.search || new URLSearchParams();
-                (this.httpResourceService.requestOptionsArgs.search as URLSearchParams).append("phone", userToken.cookie.u_usercode);
-                (this.httpResourceService.requestOptionsArgs.search as URLSearchParams).append("token", userToken.accessInfo.accessToken);
+                this.httpResourceService.requestOptionsArgs.search = new URLSearchParams("phone=" + userToken.cookie.u_usercode + "&token=" + userToken.accessInfo.accessToken);
             }
         }
     }

@@ -51,7 +51,7 @@ export class HttpResourceService {
         this.toastOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS;
     }
 
-    httpUIPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
+    httpUIPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<any> {
 
         let _loadingOptions = {show: true};
         let _toastOptions = {show: true};

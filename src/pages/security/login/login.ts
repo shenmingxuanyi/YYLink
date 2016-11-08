@@ -3,6 +3,7 @@ import {NavController} from 'ionic-angular';
 import {ForgetPasswordPage} from "../forget-password/forget-password";
 import {RegisterPage} from "../register/register";
 import {UserService} from "../../../providers/user-service/user-service";
+import {RESPONSE_TYPE} from "../../../configs/http-resource.config";
 
 declare var JSEncrypt: any;
 
@@ -28,8 +29,10 @@ export class LoginPage {
     }
 
     login() {
-        this.userService.login(this.phone, this.password).subscribe((data)=> {
-            console.log(data);
+        this.userService.login(this.phone, this.password).subscribe((data: any)=> {
+            if (RESPONSE_TYPE.SUCCESS == data.code) {
+                
+            }
         });
     }
 
