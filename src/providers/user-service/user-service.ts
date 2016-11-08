@@ -22,9 +22,7 @@ export class UserService {
         accessInfo: null
     }
 
-    userInfo = {
-        phone: null
-    }
+    userInfo: any;
 
     constructor(public http: Http, public httpResourceService: HttpResourceService, public events: Events, public storage: Storage) {
         console.log('Constructor UserService Provider');
@@ -50,7 +48,7 @@ export class UserService {
             })
             .map((data: any)=> {
                 if (RESPONSE_TYPE.SUCCESS == data['code']) {
-                    this.setUserInfo(Object.assign(this.userInfo, {phone: phone}));
+                    this.setUserInfo(Object.assign({}, this.userInfo, {phone: phone}));
 
                     let tokenInfo = {
                         cookie: data['cookie'],

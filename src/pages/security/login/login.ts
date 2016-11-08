@@ -25,7 +25,9 @@ export class LoginPage {
         this.userService.getUserInfo()
             .then((userInfo)=> {
                 console.log(userInfo);
-                this.phone = userInfo.phone;
+                if (userInfo) {
+                    this.phone = userInfo.phone;
+                }
             });
     }
 
