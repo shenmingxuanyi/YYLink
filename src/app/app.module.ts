@@ -31,7 +31,7 @@ import {ForgetPasswordForSetPasswordPage} from "../pages/security/forget-passwor
 import {ForgetPasswordPage} from "../pages/security/forget-password/forget-password";
 import {RegisterPage} from "../pages/security/register/register";
 import {LoginPage} from "../pages/security/login/login";
-import {HttpResourceService} from "../providers/http-resource-service";
+import {HttpResourceService} from "../providers/http-resource-service/http-resource-service";
 
 //安全－页面
 const SECURITY_PAGE = [LoginPage, RegisterPage, ForgetPasswordPage, ForgetPasswordForSetPasswordPage, RegisterForSetPasswordPage];

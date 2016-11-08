@@ -5,7 +5,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/finally';
 import {Observable} from "rxjs";
 import {LoadingController, ToastController, LoadingOptions, ToastOptions} from "ionic-angular";
-import {RESTFUL_RESOURCE_ENDPOINT} from "../configs/resource.config";
+import {RESTFUL_RESOURCE_ENDPOINT} from "../../configs/resource.config";
 
 
 export const HTTP_RESOURCE_VIEW_CONFIG_CONSTANT = {

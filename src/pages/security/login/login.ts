@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ForgetPasswordPage} from "../forget-password/forget-password";
 import {RegisterPage} from "../register/register";
-import {HttpResourceService} from "../../../providers/http-resource-service";
+import {HttpResourceService} from "../../../providers/http-resource-service/http-resource-service";
 import {RESTFUL_RESOURCE_ENDPOINT, RESTFUL_RESOURCES} from "../../../configs/resource.config";
 import {TabsPage} from "../../tabs/tabs";
 import {RSA_PUBLIC_KEY} from "../../../configs/security.config";
