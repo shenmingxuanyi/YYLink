@@ -1,0 +1,23 @@
+{
+  "code": "0",
+  "information": {
+    "id": null,
+    "userid": "kMSCrBnJo16jN9eudyVQM",
+    "userName": "王彦龙",
+    "password": "ncUser7515",
+    "description": null,
+    "birthday": null,
+    "registerdate": 1474368635000,
+    "location": null,
+    "company": null,
+    "email": null,
+    "usercode": null,
+    "phone": "13684787515",
+    "telnum": null,
+    "avatar": null,
+    "association": "nc",
+    "ts": null,
+    "credentialsSalt": "zfXR5cH6PqUar2WFuhvDEQ=="
+  },
+  "extraInfo": "{\"org\":\"0001A210000000003CCG\",\"org_name\":\"用友医疗卫生信息系统有限公司\",\"dept\":\"0001A010000000006H3K\",\"dept_name\":\"2016-东北区\"}"
+}

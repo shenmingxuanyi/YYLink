@@ -30,9 +30,6 @@ export class LoginPage {
 
     login() {
         this.userService.login(this.phone, this.password).subscribe((data: any)=> {
-            if (RESPONSE_TYPE.SUCCESS == data.code) {
-                
-            }
         });
     }
 

@@ -34,16 +34,7 @@ export class MyApp implements OnInit,OnDestroy {
                         .then(userTokenInfo=> {
                             if (userTokenInfo) {
                                 this.userService.setHttpAuthority(userTokenInfo);
-                                this.userService.queryUserInfo()
-                                    .subscribe((data: any)=> {
-                                        if (RESPONSE_TYPE.SUCCESS == data.code) {
-
-                                        } else {
-                                            this.rootPage = LoginPage;
-                                        }
-                                    }, ()=> {
-                                        this.rootPage = LoginPage;
-                                    });
+                                this.queryUserInfo();
                             } else {
                                 this.rootPage = LoginPage;
                             }
@@ -60,11 +51,25 @@ export class MyApp implements OnInit,OnDestroy {
             })
     }
 
+    private queryUserInfo() {
+        this.userService.queryUserInfo()
+            .subscribe((data: any)=> {
+                if (RESPONSE_TYPE.SUCCESS == data.code) {
+                    console.log(data);
+                } else {
+                    this.rootPage = LoginPage;
+                }
+            }, ()=> {
+                this.rootPage = LoginPage;
+            });
+    }
+
     ngOnInit() {
         console.log("ngOnInit")
 
         this.events.subscribe(SYSTEM_EVENTS.SECURITY.LOGIN, (userTokenInfo)=> {
             this.rootPage = TabsPage;
+            this.queryUserInfo();
         });
 
         this.events.subscribe(SYSTEM_EVENTS.SECURITY.LOGOUT, (userTokenInfo)=> {

@@ -67,7 +67,7 @@ export class UserService {
 
     logout(): void {
         if (this.userTokenInfo && this.userInfo) {
-            this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGOUT, {}, false, false).subscribe()
+            this.httpResourceService.get(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGOUT, null, false, false).subscribe()
         }
         this.storage.remove(LOCAL_STORAGE_KEY.USER.USER_INFO);
         if (this.userInfo) {
@@ -80,8 +80,16 @@ export class UserService {
         this.events.publish(SYSTEM_EVENTS.SECURITY.LOGOUT, null);
     }
 
-    queryUserInfo(): Observable<Response> {
-        return this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.USER_INFO, {});
+    queryUserInfo(): Observable<any> {
+        return this.httpResourceService.get(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.USER_INFO)
+            .map((data: any)=> {
+                if (RESPONSE_TYPE.SUCCESS == data.code) {
+                    let userInfo = data.information;
+                    userInfo['extraInfo'] = JSON.parse(data['extraInfo']);
+                    this.setUserInfo(userInfo);
+                }
+                return data;
+            });
     }
 
     setUserInfo(userInfo) {
