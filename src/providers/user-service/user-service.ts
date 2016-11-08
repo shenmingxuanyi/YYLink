@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Response} from '@angular/http';
+import {Http, Response, Headers} from '@angular/http';
 import 'rxjs/add/operator/map';
 import {RSA_PUBLIC_KEY} from "../../configs/security.config";
 import {RESTFUL_RESOURCES, RESTFUL_RESOURCE_ENDPOINT} from "../../configs/resource.config";
@@ -17,13 +17,12 @@ declare var JSEncrypt: any;
 @Injectable()
 export class UserService {
 
-
     userTokenInfo: {
         cookie: null,
         accessInfo: null
     }
 
-    currentUserInfo = {
+    userInfo = {
         phone: null
     }
 
@@ -42,15 +41,21 @@ export class UserService {
         };
 
         return this.httpResourceService
-            .httpUIPoxy(this.http.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGIN, parameters))
+            .httpUIPoxy(this.http.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGIN, parameters), {
+                headers: new Headers({
+                    'Accept': 'application/json',
+                    "Content-Type": 'application/json',
+                    "Access-Control-Allow-Origin": RESTFUL_RESOURCE_ENDPOINT
+                })
+            })
             .map((data: any)=> {
                 if (RESPONSE_TYPE.SUCCESS == data['code']) {
-                    this.currentUserInfo['phone'] = phone;
+                    this.setUserInfo(Object.assign(this.userInfo, {phone: phone}));
+
                     let tokenInfo = {
                         cookie: data['cookie'],
                         accessInfo: {accessToken: data['accessToken'], association: data['association']}
                     };
-
                     this.setUserTokenInfo(tokenInfo);
 
                     this.events.publish(SYSTEM_EVENTS.SECURITY.LOGIN, tokenInfo);
@@ -59,12 +64,36 @@ export class UserService {
             });
     }
 
+    logout() {
+        this.events.publish(SYSTEM_EVENTS.SECURITY.LOGOUT, null);
+    }
+
+    setUserInfo(userInfo) {
+        this.userInfo = userInfo;
+        this.storage.set(LOCAL_STORAGE_KEY.USER.USER_INFO, userInfo);
+    }
+
+    getUserInfo(): Promise<any> {
+        if (this.userInfo && this.userInfo.phone) {
+            return Promise.resolve(this.userInfo);
+        } else {
+            return this.storage.get(LOCAL_STORAGE_KEY.USER.USER_INFO).then((userInfo)=> {
+                this.userInfo = userInfo;
+                return userInfo;
+            });
+        }
+    }
+
     getUserTokenInfo(): Promise<any> {
         if (this.userTokenInfo) {
-            Promise.resolve(this.userTokenInfo)
+            return Promise.resolve(this.userTokenInfo)
         } else {
-            if (this.currentUserInfo['phone']) {
-                return this.storage.get(this.currentUserInfo['phone'] + ":" + LOCAL_STORAGE_KEY.USER.USER_TOKEN_INFO);
+            if (this.userInfo['phone']) {
+                return this.storage.get(this.userInfo['phone'] + ":" + LOCAL_STORAGE_KEY.USER.USER_TOKEN_INFO)
+                    .then((userTokenInfo)=> {
+                        this.userTokenInfo = userTokenInfo;
+                        return userTokenInfo;
+                    });
             }
         }
         return Promise.resolve(null);
@@ -72,7 +101,8 @@ export class UserService {
 
     setUserTokenInfo(userTokenInfo: any) {
         this.userTokenInfo = userTokenInfo;
-        this.storage.set(this.currentUserInfo['phone'] + ":" + LOCAL_STORAGE_KEY.USER.USER_TOKEN_INFO, userTokenInfo);
+        this.storage.set(this.userInfo['phone'] + ":" + LOCAL_STORAGE_KEY.USER.USER_TOKEN_INFO, userTokenInfo);
     }
+
 
 }

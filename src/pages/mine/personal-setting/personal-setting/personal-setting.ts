@@ -4,7 +4,7 @@ import {OptionIntroducePage} from "../option-introduce/option-introduce";
 import {BeginnerHelpPage} from "../beginner-help/beginner-help";
 import {LabelManagerPage} from "../label-manager/label-manager";
 import {ComplaintSuggestPage} from "../complaint-suggest/complaint-suggest";
-import {LoginPage} from "../../../security/login/login";
+import {UserService} from "../../../../providers/user-service/user-service";
 
 /*
  Generated class for the PersonalSetting page.
@@ -27,7 +27,7 @@ export class PersonalSettingPage {
 
     complaintSuggest = ComplaintSuggestPage;
 
-    constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+    constructor(public navCtrl: NavController, public toastCtrl: ToastController, public userService: UserService) {
     }
 
     pushPage(page: any) {
@@ -48,7 +48,7 @@ export class PersonalSettingPage {
     }
 
     logOut() {
-        this.navCtrl.setRoot(LoginPage)
+        this.userService.logout();
     }
 
 }

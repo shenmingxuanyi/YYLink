@@ -36,6 +36,8 @@ export class MyApp implements OnInit,OnDestroy {
 
     }
 
+
+
     ngOnDestroy() {
         this.events.unsubscribe(SYSTEM_EVENTS.SECURITY.LOGIN);
         this.events.unsubscribe(SYSTEM_EVENTS.SECURITY.LOGOUT);

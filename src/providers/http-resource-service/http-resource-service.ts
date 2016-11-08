@@ -33,7 +33,7 @@ export const HTTP_RESOURCE_VIEW_CONFIG_CONSTANT = {
 export class HttpResourceService {
 
     requestOptionsArgs: RequestOptionsArgs = {
-        search: new URLSearchParams("phone=15311621031&token=XXXX-XXXX-XXXX"),
+        search: new URLSearchParams(),
         headers: new Headers({
             'Accept': 'application/json',
             "Content-Type": 'application/json',
