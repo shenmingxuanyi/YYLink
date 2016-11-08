@@ -16,14 +16,20 @@ export class MyApp implements OnInit,OnDestroy {
     rootPage: any = TabsPage;
 
     constructor(platform: Platform, public events: Events) {
-
         platform.ready().then(() => {
             StatusBar.styleDefault();
             Splashscreen.hide();
+            this.initialize();
         });
     }
 
+
+    initialize() {
+
+    }
+
     ngOnInit() {
+        console.log("ngOnInit")
 
         this.events.subscribe(SYSTEM_EVENTS.SECURITY.LOGIN, (userTokenInfo)=> {
             this.rootPage = TabsPage;

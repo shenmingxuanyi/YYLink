@@ -15,7 +15,8 @@ export const RESTFUL_RESOURCE_ENDPOINT = 'http://10.1.76.36:8080/';
 export const RESTFUL_RESOURCES = {
     SECURITY: {
         LOGIN: 'user/loginNormally',
-        LOGOUT: '',
+        LOGOUT: 'user/logout',
+        USER_INFO: 'user/userInfo',
         FORGET_PASSWORD: '',
         FORGET_PASSWORD_TO_SET_PASSWORD: '',
         REGISTER: '',

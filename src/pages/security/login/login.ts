@@ -21,18 +21,15 @@ export class LoginPage {
     }
 
     ionViewDidLoad() {
-        console.log('Hello Login Page');
-        this.userService.getUserInfo()
-            .then((userInfo)=> {
-                console.log(userInfo);
-                if (userInfo) {
-                    this.phone = userInfo.phone;
-                }
+        this.userService.getLastUserName()
+            .then((lastUsername)=> {
+                this.phone = lastUsername;
             });
     }
 
     login() {
         this.userService.login(this.phone, this.password).subscribe((data)=> {
+            console.log(data);
         });
     }
 
