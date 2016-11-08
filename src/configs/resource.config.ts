@@ -17,13 +17,27 @@ export const RESTFUL_RESOURCES = {
         LOGIN: 'user/loginNormally',
         LOGOUT: 'user/logout',
         USER_INFO: 'user/userInfo',
-        FORGET_PASSWORD: '',
-        FORGET_PASSWORD_TO_SET_PASSWORD: '',
+        FORGET_PASSWORD_SEND_MESSAGE_CODE: '/user/sendMsg',
+        FORGET_PASSWORD_VALID_MESSAGE_CODE: '/user/validMsgCode',
         REGISTER: '',
         REGISTER_TO_SET_INFORMATION: ''
     },
-    HOME: {},
-    BILL: {},
+    HOME: {
+        NODE_TRAVEL: {
+            SAVE_TRAVEL_NODE: 'nodeTravel/saveTravelNode'
+        },
+        NODE_HOTEL: {
+            SAVE_HOTEL_NODE: 'nodeHotel/saveHotelNode'
+        },
+        nodeEating: {
+            saveEatingNode: '/nodeEating/saveEatingNode'
+        }
+    },
+    BILL: {
+        GET_NODES_BY_TAG: '/node/getNodesByTag',
+        GET_NODES_BY_DATE: '/node/getNodesByDate',
+        GET_NODES_BETWEEN_DATE: '/node/getNodesBetweenDate'
+    },
     SELF: {}
 
 };
