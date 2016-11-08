@@ -53,10 +53,25 @@ export class HttpResourceService {
 
     httpUIPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
 
+        let _loadingOptions = {show: true};
+        let _toastOptions = {show: true};
+
+        if (false === loadingOptions) {
+            _loadingOptions = {show: false};
+        } else if (true !== loadingOptions) {
+            _loadingOptions = Object.assign(_loadingOptions, loadingOptions);
+        }
+
+        if (false === toastOptions) {
+            _toastOptions = {show: false};
+        } else if (true !== toastOptions) {
+            _toastOptions = Object.assign(_toastOptions, toastOptions);
+        }
+
         let loading = null;
 
-        if (false != loadingOptions) {
-            loading = this.loadingController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.LOADING_OPTIONS, loadingOptions));
+        if (_loadingOptions.show) {
+            loading = this.loadingController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.LOADING_OPTIONS, _loadingOptions));
             loading.present();
         }
 
@@ -64,21 +79,26 @@ export class HttpResourceService {
             .map((response)=> {
                 let responseJson = response.json();
                 if ('0' != responseJson['code']) {
-                    this.toastController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS, {message: responseJson['information'] || '请求出现了错误'}, toastOptions)).present();
+                    if (_toastOptions.show) {
+                        this.toastController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS, {message: responseJson['information'] || '请求出现了错误'}, _toastOptions)).present();
+
+                    }
                 }
                 return responseJson;
             })
             .catch((error)=> {
-                if (false != loadingOptions) {
+                if (_loadingOptions.show) {
                     if (loading) {
                         loading.dismiss();
                     }
                 }
-                this.toastController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS, {message: null != error ? JSON.stringify(error) : '请求出现了错误'}, toastOptions)).present();
+                if (_toastOptions.show) {
+                    this.toastController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS, {message: null != error ? JSON.stringify(error) : '请求出现了错误'}, _toastOptions)).present();
+                }
                 return Observable.throw(error);
             })
             .finally(()=> {
-                if (false != loadingOptions) {
+                if (_loadingOptions.show) {
                     if (loading) {
                         loading.dismiss();
                     }

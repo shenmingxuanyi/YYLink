@@ -39,13 +39,13 @@ export class UserService {
         };
 
         return this.httpResourceService
-            .httpUIPoxy(this.http.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGIN, parameters), {
+            .httpUIPoxy(this.http.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGIN, parameters, {
                 headers: new Headers({
                     'Accept': 'application/json',
                     "Content-Type": 'application/json',
                     "Access-Control-Allow-Origin": RESTFUL_RESOURCE_ENDPOINT
                 })
-            })
+            }))
             .map((data: any)=> {
                 if (RESPONSE_TYPE.SUCCESS == data['code']) {
                     this.setUserInfo(Object.assign({}, this.userInfo, {phone: phone}));

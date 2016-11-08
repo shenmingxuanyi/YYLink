@@ -1,7 +1,6 @@
 import {Component, ViewChild, OnInit, OnDestroy} from '@angular/core';
 import {Platform, Nav, Events} from 'ionic-angular';
 import {StatusBar, Splashscreen} from 'ionic-native';
-
 import {TabsPage} from '../pages/tabs/tabs';
 import {LoginPage} from "../pages/security/login/login";
 import {SYSTEM_EVENTS} from "../configs/event.config";
@@ -14,7 +13,7 @@ export class MyApp implements OnInit,OnDestroy {
 
     @ViewChild(Nav) nav: Nav;
 
-    rootPage = TabsPage;
+    rootPage: any = TabsPage;
 
     constructor(platform: Platform, public events: Events) {
 
@@ -35,7 +34,6 @@ export class MyApp implements OnInit,OnDestroy {
         });
 
     }
-
 
 
     ngOnDestroy() {
