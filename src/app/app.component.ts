@@ -36,18 +36,18 @@ export class MyApp implements OnInit,OnDestroy {
                                 this.userService.setHttpAuthority(userTokenInfo);
                                 this.queryUserInfo();
                             } else {
-                                this.rootPage = LoginPage;
+                                this.nav.setRoot(LoginPage);
                             }
                         })
                         .catch(()=> {
-                            this.rootPage = LoginPage;
+                            this.nav.setRoot(LoginPage);
                         })
                 } else {
-                    this.rootPage = LoginPage;
+                    this.nav.setRoot(LoginPage);
                 }
             })
             .catch(()=> {
-                this.rootPage = LoginPage;
+                this.nav.setRoot(LoginPage);
             })
     }
 
@@ -57,23 +57,22 @@ export class MyApp implements OnInit,OnDestroy {
                 if (RESPONSE_TYPE.SUCCESS == data.code) {
                     console.log(data);
                 } else {
-                    this.rootPage = LoginPage;
+                    this.nav.setRoot(LoginPage);
                 }
             }, ()=> {
-                this.rootPage = LoginPage;
+                this.nav.setRoot(LoginPage);
             });
     }
 
     ngOnInit() {
-        console.log("ngOnInit")
 
         this.events.subscribe(SYSTEM_EVENTS.SECURITY.LOGIN, (userTokenInfo)=> {
-            this.rootPage = TabsPage;
             this.queryUserInfo();
+            this.nav.setRoot(TabsPage);
         });
 
         this.events.subscribe(SYSTEM_EVENTS.SECURITY.LOGOUT, (userTokenInfo)=> {
-            this.rootPage = LoginPage;
+            this.nav.setRoot(LoginPage);
         });
 
     }

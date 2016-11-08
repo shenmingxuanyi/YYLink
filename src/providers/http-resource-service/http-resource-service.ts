@@ -45,10 +45,15 @@ export class HttpResourceService {
 
     toastOptions: ToastOptions;
 
+    private _loadingCounter = 0;
+
+    private _loading: any = null;
+
     constructor(public http: Http, private loadingController: LoadingController, private toastController: ToastController) {
         console.log('Constructor HttpResourceService Provider');
         this.loadingOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.LOADING_OPTIONS;
         this.toastOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS;
+
     }
 
     httpUIPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<any> {
@@ -68,11 +73,15 @@ export class HttpResourceService {
             _toastOptions = Object.assign(_toastOptions, toastOptions);
         }
 
-        let loading = null;
 
         if (_loadingOptions.show) {
-            loading = this.loadingController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.LOADING_OPTIONS, _loadingOptions));
-            loading.present();
+            if (this._loadingCounter == 0) {
+                this._loading = this.loadingController.create(Object.assign({}, this.loadingOptions, _loadingOptions));
+                this._loading.present();
+                ++this._loadingCounter;
+            } else {
+                ++this._loadingCounter;
+            }
         }
 
         return observable
@@ -80,7 +89,7 @@ export class HttpResourceService {
                 let responseJson = response.json();
                 if ('0' != responseJson['code']) {
                     if (_toastOptions.show) {
-                        this.toastController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS, {message: responseJson['information'] || '请求出现了错误'}, _toastOptions)).present();
+                        this.toastController.create(Object.assign({}, this.toastOptions, {message: responseJson['information'] || '请求出现了错误'}, _toastOptions)).present();
 
                     }
                 }
@@ -88,19 +97,29 @@ export class HttpResourceService {
             })
             .catch((error)=> {
                 if (_loadingOptions.show) {
-                    if (loading) {
-                        loading.dismiss();
+                    if (this._loading) {
+                        if (this._loadingCounter > 1) {
+                            --this._loadingCounter;
+                        } else {
+                            this._loading.dismiss();
+                            --this._loadingCounter;
+                        }
                     }
                 }
                 if (_toastOptions.show) {
-                    this.toastController.create(Object.assign({}, HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS, {message: null != error ? JSON.stringify(error) : '请求出现了错误'}, _toastOptions)).present();
+                    this.toastController.create(Object.assign({}, this.toastOptions, {message: null != error ? JSON.stringify(error) : '请求出现了错误'}, _toastOptions)).present();
                 }
                 return Observable.throw(error);
             })
             .finally(()=> {
                 if (_loadingOptions.show) {
-                    if (loading) {
-                        loading.dismiss();
+                    if (this._loading) {
+                        if (this._loadingCounter > 1) {
+                            --this._loadingCounter;
+                        } else {
+                            this._loading.dismiss();
+                            --this._loadingCounter;
+                        }
                     }
                 }
             });
