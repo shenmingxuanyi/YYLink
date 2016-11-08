@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Headers, URLSearchParams, Response, RequestOptionsArgs, Request, RequestMethod} from '@angular/http';
+import {Http, Headers, URLSearchParams, Response, RequestOptionsArgs, Request} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/finally';

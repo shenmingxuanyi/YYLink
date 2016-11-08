@@ -1,5 +1,6 @@
 import {NgModule} from '@angular/core';
 import {IonicApp, IonicModule} from 'ionic-angular';
+import {Storage} from '@ionic/storage';
 import {MyApp} from './app.component';
 import {TabsPage} from '../pages/tabs/tabs';
 import {PLATFORMS_CONFIG_CONSTANT} from "../configs/platform.config";
@@ -32,6 +33,7 @@ import {ForgetPasswordPage} from "../pages/security/forget-password/forget-passw
 import {RegisterPage} from "../pages/security/register/register";
 import {LoginPage} from "../pages/security/login/login";
 import {HttpResourceService} from "../providers/http-resource-service/http-resource-service";
+import {UserService} from "../providers/user-service/user-service";
 
 //安全－页面
 const SECURITY_PAGE = [LoginPage, RegisterPage, ForgetPasswordPage, ForgetPasswordForSetPasswordPage, RegisterForSetPasswordPage];
@@ -51,7 +53,7 @@ const COMPONENTS = [DropownComponent];
 //指令
 const DIRECTIVES = [];
 //服务
-const PROVIDERS = [HttpResourceService];
+const PROVIDERS = [Storage, HttpResourceService, UserService];
 
 const MODULES = [];
 

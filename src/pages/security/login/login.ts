@@ -2,10 +2,7 @@ import {Component} from '@angular/core';
 import {NavController} from 'ionic-angular';
 import {ForgetPasswordPage} from "../forget-password/forget-password";
 import {RegisterPage} from "../register/register";
-import {HttpResourceService} from "../../../providers/http-resource-service/http-resource-service";
-import {RESTFUL_RESOURCE_ENDPOINT, RESTFUL_RESOURCES} from "../../../configs/resource.config";
-import {TabsPage} from "../../tabs/tabs";
-import {RSA_PUBLIC_KEY} from "../../../configs/security.config";
+import {UserService} from "../../../providers/user-service/user-service";
 
 declare var JSEncrypt: any;
 
@@ -19,7 +16,7 @@ export class LoginPage {
 
     password: string;
 
-    constructor(public navCtrl: NavController, public httpResourceService: HttpResourceService) {
+    constructor(public navCtrl: NavController, public userService: UserService) {
 
     }
 
@@ -28,21 +25,9 @@ export class LoginPage {
     }
 
     login() {
+        this.userService.login(this.phone, this.password).subscribe((data)=> {
 
-        let encrypt = new JSEncrypt();
-        encrypt.setPublicKey(RSA_PUBLIC_KEY);
-
-        let parameters = {
-            phone: this.phone,
-            password: encrypt.encrypt(this.password)
-        };
-
-        this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGIN, parameters)
-            .subscribe((data: any)=> {
-                if ('0' == data.code) {
-                    this.navCtrl.setRoot(TabsPage);
-                }
-            });
+        });
     }
 
     forgetPassword() {

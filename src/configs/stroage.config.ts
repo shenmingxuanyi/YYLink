@@ -2,6 +2,10 @@
  * Created by zhaojunming on 16/11/7.
  */
 
-const LOCAL_STORAGE_KEY = {};
+export const LOCAL_STORAGE_KEY = {
+    USER: {
+        USER_TOKEN_INFO: 'LOCAL_STORAGE_KEY:USER:USER_TOKEN_INFO'
+    }
+};
 
-const SESSION_STORAGE_KEY = {};
+export const SESSION_STORAGE_KEY = {};
