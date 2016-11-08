@@ -41,17 +41,17 @@ export class HttpResourceService {
         })
     };
 
-    private _loadingOptions: LoadingOptions;
+    loadingOptions: LoadingOptions;
 
-    private _toastOptions: ToastOptions;
+    toastOptions: ToastOptions;
 
     constructor(public http: Http, private loadingController: LoadingController, private toastController: ToastController) {
         console.log('Constructor HttpResourceService Provider');
-        this._loadingOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.LOADING_OPTIONS;
-        this._toastOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS;
+        this.loadingOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.LOADING_OPTIONS;
+        this.toastOptions = HTTP_RESOURCE_VIEW_CONFIG_CONSTANT.TOAST_OPTIONS;
     }
 
-    private _httpPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
+    httpUIPoxy(observable: Observable<Response>, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
 
         let loading = null;
 
@@ -88,43 +88,43 @@ export class HttpResourceService {
 
     request(url: string | Request, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
 
-        return this._httpPoxy(this.http.request(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.request(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
 
     }
 
     get(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions, toastOptions?: ToastOptions): Observable<Response> {
-        return this._httpPoxy(this.http.get(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.get(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
     }
 
 
     post(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this._httpPoxy(this.http.post(url, body, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.post(url, body, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
     }
 
 
     put(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this._httpPoxy(this.http.put(url, body, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.put(url, body, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
 
     }
 
 
     delete(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this._httpPoxy(this.http.delete(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.delete(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
     }
 
 
     patch(url: string, body: any, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this._httpPoxy(this.http.patch(url, body, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.patch(url, body, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
     }
 
 
     head(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this._httpPoxy(this.http.head(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.head(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
     }
 
 
     options(url: string, options?: RequestOptionsArgs, loadingOptions?: LoadingOptions|boolean, toastOptions?: ToastOptions|boolean): Observable<Response> {
-        return this._httpPoxy(this.http.options(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
+        return this.httpUIPoxy(this.http.options(url, Object.assign({}, this.requestOptionsArgs, options)), loadingOptions, toastOptions);
     }
 
 }
