@@ -3,9 +3,6 @@ import {NavController} from 'ionic-angular';
 import {ForgetPasswordPage} from "../forget-password/forget-password";
 import {RegisterPage} from "../register/register";
 import {UserService} from "../../../providers/user-service/user-service";
-import {RESPONSE_TYPE} from "../../../configs/http-resource.config";
-
-declare var JSEncrypt: any;
 
 @Component({
     selector: 'page-login',
