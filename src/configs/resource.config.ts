@@ -17,8 +17,8 @@ export const RESTFUL_RESOURCES = {
         LOGIN: 'user/loginNormally',
         LOGOUT: 'user/logout',
         USER_INFO: 'user/userInfo',
-        FORGET_PASSWORD_SEND_MESSAGE_CODE: '/user/sendMsg',
-        FORGET_PASSWORD_VALID_MESSAGE_CODE: '/user/validMsgCode',
+        FORGET_PASSWORD_SEND_MESSAGE_CODE: 'user/sendMsg',
+        FORGET_PASSWORD_VALID_MESSAGE_CODE: 'user/validMsgCode',
         REGISTER: '',
         REGISTER_TO_SET_INFORMATION: ''
     },
@@ -32,8 +32,8 @@ export const RESTFUL_RESOURCES = {
             UPDATE_HOTEL_NODE: 'nodeHotel/updateHotelNode'
         },
         NODE_EATING: {
-            SAVE_EATING_NODE: '/nodeEating/saveEatingNode',
-            UPDATE_EATING_NODE: '/nodeEating/updateEatingNode'
+            SAVE_EATING_NODE: 'nodeEating/saveEatingNode',
+            UPDATE_EATING_NODE: 'nodeEating/updateEatingNode'
         },
         NODE_GATHER: {
             SAVE_GATHER_NODE: 'nodeGather/saveGatherNode',
@@ -44,27 +44,30 @@ export const RESTFUL_RESOURCES = {
             UPDATE_SALE_NODE: 'nodeSale/updateSaleNode'
         },
         NODE_COMMUNICATE: {
-            SAVE_COMMUNICATE_NODE: '/nodeCommunicate/saveCommunicateNode',
-            UPDATE_COMMUNICATE_NODE: '/nodeCommunicate/updateCommunicateNode'
+            SAVE_COMMUNICATE_NODE: 'nodeCommunicate/saveCommunicateNode',
+            UPDATE_COMMUNICATE_NODE: 'nodeCommunicate/updateCommunicateNode'
         },
         NODE_PAY: {
-            SAVE_PAY_NODE: '/nodePay/savePayNode',
-            UPDATE_PAY_NODE: '/nodePay/updatePayNode'
+            SAVE_PAY_NODE: 'nodePay/savePayNode',
+            UPDATE_PAY_NODE: 'nodePay/updatePayNode'
         },
         NODE_BUY: {
-            SAVE_BUY_NODE: '/nodeBuy/saveBuyNode',
-            UPDATE_BUY_NODE: '/nodeBuy/updateBuyNode'
+            SAVE_BUY_NODE: 'nodeBuy/saveBuyNode',
+            UPDATE_BUY_NODE: 'nodeBuy/updateBuyNode'
         },
         NODE_OTHER: {
-            SAVE_OTHER_NODE: '/nodeOther/saveOtherNode',
-            UPDATE_OTHER_NODE: '/nodeOther/updateOtherNode'
+            SAVE_OTHER_NODE: 'nodeOther/saveOtherNode',
+            UPDATE_OTHER_NODE: 'nodeOther/updateOtherNode'
         }
 
     },
-    BILL: {
-        GET_NODES_BY_TAG: '/node/getNodesByTag',
-        GET_NODES_BY_DATE: '/node/getNodesByDate',
-        GET_NODES_BETWEEN_DATE: '/node/getNodesBetweenDate'
+    BILL: {},
+    NODE: {
+        GET_NODES_BY_TAG: 'node/getNodesByTag',
+        GET_NODES_BY_DATE: 'node/getNodesByDate',
+        GET_NODES_BETWEEN_DATE: 'node/getNodesBetweenDate',
+        QUERY_REF_ITEM: 'node/queryRefItem'
+
     },
     SELF: {}
 

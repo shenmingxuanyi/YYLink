@@ -1,10 +1,10 @@
-import {Component, Input, EventEmitter, Output, OnInit} from '@angular/core';
+import {Component, Input, EventEmitter, Output, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 
 @Component({
     selector: 'dropdown',
     templateUrl: 'dropdown.html'
 })
-export class DropownComponent implements OnInit {
+export class DropownComponent implements OnInit, OnChanges {
 
     @Input()
     type: string = 'list';
@@ -43,6 +43,20 @@ export class DropownComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.updateViewValue();
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['value']) {
+            if (!changes['value'].isFirstChange()) {
+                if (changes['value'].previousValue != changes['value'].currentValue) {
+                    this.updateViewValue()
+                }
+            }
+        }
+    }
+
+    updateViewValue() {
         if (this.dataList && this.dataList.length > 0) {
             if (!this.value) {
 
@@ -58,7 +72,6 @@ export class DropownComponent implements OnInit {
             }
         }
     }
-
 
     triggerDropdown = () => {
         this.open = !this.open;

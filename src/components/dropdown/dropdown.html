@@ -1,6 +1,6 @@
 <div *ngIf="type=='list'">
     <button ion-item (click)="triggerDropdown();" [disabled]="disabled" detail-none>
-        <ion-icon [color]="selectColor" [name]="viewValue?.icon" item-left></ion-icon>
+        <ion-icon [hidden]="!viewValue?.icon" [color]="selectColor" [name]="viewValue?.icon" item-left></ion-icon>
         {{viewValue?.name}}
         <ion-icon [color]="selectColor" [name]="!!open?'ios-arrow-dropup':'ios-arrow-dropdown'"
                   item-right></ion-icon>
@@ -9,7 +9,8 @@
     <ion-list [hidden]="!open" (ionChange)="ionChange($event)" [(ngModel)]="value" radio-group>
 
         <ion-item *ngFor="let dataItem of dataList">
-            <ion-icon [ngStyle]="dataItem?.iconStyle" [color]="color" [name]="dataItem?.icon" item-left></ion-icon>
+            <ion-icon [hidden]="!dataItem?.icon" [ngStyle]="dataItem?.iconStyle" [color]="color" [name]="dataItem?.icon"
+                      item-left></ion-icon>
             <ion-label>{{dataItem?.name}}</ion-label>
             <ion-radio [color]="dataItem?.value==value?selectColor:color" [value]="dataItem?.value"
                        (ionSelect)="ionSelect($event,dataItem)"></ion-radio>
@@ -25,7 +26,7 @@
                 <button grid-button no-lines ion-item text-center detail-none [disabled]="disabled"
                         (click)="triggerDropdown();">
 
-                    <ion-icon [ngStyle]="viewValue?.iconStyle" [color]="selectColor"
+                    <ion-icon [hidden]="!viewValue?.icon" [ngStyle]="viewValue?.iconStyle" [color]="selectColor"
                               [name]="viewValue?.icon"></ion-icon>
                     <h3>{{viewValue?.name}}</h3>
 
@@ -41,7 +42,8 @@
                     <button grid-button no-lines ion-item text-center detail-none
                             (click)="ionSelect($event,dataItem)">
 
-                        <ion-icon [ngStyle]="dataItem?.iconStyle" [color]="color" [name]="dataItem?.icon"></ion-icon>
+                        <ion-icon [hidden]="!dataItem?.icon" [ngStyle]="dataItem?.iconStyle" [color]="color"
+                                  [name]="dataItem?.icon"></ion-icon>
                         <h3>{{dataItem?.name}}</h3>
 
                     </button>

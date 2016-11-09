@@ -77,6 +77,22 @@
 
         </ion-grid>
 
+        <ion-item-divider no-lines style="background-color: #fff">
+            <p>费用类型</p>
+        </ion-item-divider>
+
+        <ion-card style="margin-top: 0;">
+            <ion-item>
+                <ion-icon item-left>
+                    <ion-spinner [hidden]="!moneyTypeListLoading"></ion-spinner>
+                </ion-icon>
+                正在查询费用类型
+            </ion-item>
+
+            <dropdown [hidden]="moneyTypeListLoading||moneyTypeList.length==0" type="list" [dataList]="moneyTypeList"
+                      [(value)]="travelModel.expensetype"></dropdown>
+        </ion-card>
+
         <ion-item>
             <ion-label color="dark">
                 备注
