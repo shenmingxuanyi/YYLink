@@ -1,6 +1,9 @@
 import {Component} from '@angular/core';
 import {NavController, ToastController} from 'ionic-angular';
 import {BillFillTravelModel} from "../../../models/bill-fill-travel-model";
+import {HttpResourceService} from "../../../providers/http-resource-service/http-resource-service";
+import {RESTFUL_RESOURCE_ENDPOINT, RESTFUL_RESOURCES} from "../../../configs/resource.config";
+import {RESPONSE_TYPE} from "../../../configs/http-resource.config";
 
 /*
  Generated class for the FillBillForTravel page.
@@ -28,7 +31,7 @@ export class FillBillForTravelPage {
     ];
 
 
-    constructor(public navCtrl: NavController, public toastCtrl: ToastController) {
+    constructor(public navCtrl: NavController, public toastCtrl: ToastController, public httpResourceService: HttpResourceService) {
         this.travelModel.travelDate = '2016-10-10';
         this.travelModel.travelWay = '打车';
     }
@@ -37,16 +40,29 @@ export class FillBillForTravelPage {
         console.log('Hello FillBillForTravel Page');
     }
 
+    addressExchange() {
+        let address = this.travelModel.fromCity;
+        this.travelModel.fromCity = this.travelModel.toCity;
+        this.travelModel.toCity = address;
+    }
 
     saveBill() {
-        console.log(this.travelModel);
-        let toast = this.toastCtrl.create({
-            message: '保存报帐信息成功',
-            duration: 3000
-        });
-        toast.present().then(()=> {
-            this.navCtrl.pop();
-        });
+
+        this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.HOME.NODE_TRAVEL.SAVE_TRAVEL_NODE, this.travelModel)
+            .subscribe((data: any)=> {
+                if (RESPONSE_TYPE.SUCCESS == data.code) {
+                    let toast = this.toastCtrl.create({
+                        message: '保存报帐信息成功',
+                        duration: 3000
+                    });
+                    toast.present().then(()=> {
+                        this.travelModel = new BillFillTravelModel();
+                        this.travelModel.travelDate = '2016-10-10';
+                        this.travelModel.travelWay = '打车';
+                    });
+                }
+            });
+
     }
 
 

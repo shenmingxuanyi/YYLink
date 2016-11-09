@@ -29,8 +29,8 @@ export const RESTFUL_RESOURCES = {
         NODE_HOTEL: {
             SAVE_HOTEL_NODE: 'nodeHotel/saveHotelNode'
         },
-        nodeEating: {
-            saveEatingNode: '/nodeEating/saveEatingNode'
+        NODE_EATING: {
+            SAVE_EATING_NODE: '/nodeEating/saveEatingNode'
         }
     },
     BILL: {

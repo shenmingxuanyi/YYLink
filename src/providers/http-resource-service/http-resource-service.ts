@@ -25,7 +25,7 @@ export const HTTP_RESOURCE_VIEW_CONFIG_CONSTANT = {
         showCloseButton: null,
         closeButtonText: null,
         dismissOnPageChange: null,
-        position: 'bottom'
+        position: 'middle'
     }
 };
 
