@@ -21,14 +21,15 @@
             <ion-label>
                 <ion-icon name="logo-yen" style="color: orange;"></ion-icon>
             </ion-label>
-            <ion-input type="number" placeholder="请输入报销金额" clearInput></ion-input>
+            <ion-input text-right [(ngModel)]="travelModel.money" type="number" placeholder="请输入报销金额"
+                       clearInput></ion-input>
         </ion-item>
 
         <ion-item-divider no-lines style="background-color: #fff">
             <p>交通工具</p>
         </ion-item-divider>
 
-        <dropdown type="grid" [dataList]="travelTypeList" [(value)]="travelType"></dropdown>
+        <dropdown type="grid" [dataList]="travelTypeList" [(value)]="travelModel.travelWay"></dropdown>
 
         <ion-grid no-padding>
 
@@ -40,14 +41,16 @@
                         <ion-label color="primary">
                             <ion-icon name="ios-radio-button-on-outline" color="calm"></ion-icon>
                         </ion-label>
-                        <ion-input [(ngModel)]="startAddress" type="text" placeholder="请输入起点" clearInput></ion-input>
+                        <ion-input [(ngModel)]="travelModel.fromCity" type="text" placeholder="请输入起点"
+                                   clearInput></ion-input>
                     </ion-item>
 
                     <ion-item>
                         <ion-label color="primary">
                             <ion-icon name="ios-radio-button-on-outline" style="color: orange;"></ion-icon>
                         </ion-label>
-                        <ion-input [(ngModel)]="endAddress" type="text" placeholder="请输入终点" clearInput></ion-input>
+                        <ion-input [(ngModel)]="travelModel.toCity" type="text" placeholder="请输入终点"
+                                   clearInput></ion-input>
                     </ion-item>
 
                 </ion-col>
@@ -67,7 +70,7 @@
                         </ion-label>
                         <ion-datetime cancelText="取消" doneText="确定" displayFormat="YYYY-MM-DD"
                                       pickerFormat="YYYY-MM-DD"
-                                      [(ngModel)]="dateTime"></ion-datetime>
+                                      [(ngModel)]="travelModel.travelDate"></ion-datetime>
                     </ion-item>
                 </ion-col>
             </ion-row>
@@ -78,7 +81,7 @@
             <ion-label color="dark">
                 备注
             </ion-label>
-            <ion-input type="text" placeholder="请输入备注" clearInput></ion-input>
+            <ion-input type="text" [(ngModel)]="travelModel.tags" placeholder="请输入备注" clearInput></ion-input>
         </ion-item>
 
 
