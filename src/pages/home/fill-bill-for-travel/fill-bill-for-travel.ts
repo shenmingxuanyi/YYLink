@@ -48,6 +48,8 @@ export class FillBillForTravelPage {
 
     saveBill() {
 
+        console.log(this.travelModel)
+
         this.httpResourceService.post(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.HOME.NODE_TRAVEL.SAVE_TRAVEL_NODE, this.travelModel)
             .subscribe((data: any)=> {
                 if (RESPONSE_TYPE.SUCCESS == data.code) {
