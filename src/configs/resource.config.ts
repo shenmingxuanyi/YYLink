@@ -24,14 +24,42 @@ export const RESTFUL_RESOURCES = {
     },
     HOME: {
         NODE_TRAVEL: {
-            SAVE_TRAVEL_NODE: 'nodeTravel/saveTravelNode'
+            SAVE_TRAVEL_NODE: 'nodeTravel/saveTravelNode',
+            UPDATE_TRAVEL_NODE: 'nodeTravel/updateTravelNode'
         },
         NODE_HOTEL: {
-            SAVE_HOTEL_NODE: 'nodeHotel/saveHotelNode'
+            SAVE_HOTEL_NODE: 'nodeHotel/saveHotelNode',
+            UPDATE_HOTEL_NODE: 'nodeHotel/updateHotelNode'
         },
         NODE_EATING: {
-            SAVE_EATING_NODE: '/nodeEating/saveEatingNode'
+            SAVE_EATING_NODE: '/nodeEating/saveEatingNode',
+            UPDATE_EATING_NODE: '/nodeEating/updateEatingNode'
+        },
+        NODE_GATHER: {
+            SAVE_GATHER_NODE: 'nodeGather/saveGatherNode',
+            UPDATE_GATHER_NODE: 'nodeGather/updateGatherNode'
+        },
+        NODE_SALE: {
+            SAVE_SALE_NODE: 'nodeSale/saveSaleNode',
+            UPDATE_SALE_NODE: 'nodeSale/updateSaleNode'
+        },
+        NODE_COMMUNICATE: {
+            SAVE_COMMUNICATE_NODE: '/nodeCommunicate/saveCommunicateNode',
+            UPDATE_COMMUNICATE_NODE: '/nodeCommunicate/updateCommunicateNode'
+        },
+        NODE_PAY: {
+            SAVE_PAY_NODE: '/nodePay/savePayNode',
+            UPDATE_PAY_NODE: '/nodePay/updatePayNode'
+        },
+        NODE_BUY: {
+            SAVE_BUY_NODE: '/nodeBuy/saveBuyNode',
+            UPDATE_BUY_NODE: '/nodeBuy/updateBuyNode'
+        },
+        NODE_OTHER: {
+            SAVE_OTHER_NODE: '/nodeOther/saveOtherNode',
+            UPDATE_OTHER_NODE: '/nodeOther/updateOtherNode'
         }
+
     },
     BILL: {
         GET_NODES_BY_TAG: '/node/getNodesByTag',
