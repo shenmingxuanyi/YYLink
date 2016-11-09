@@ -8,9 +8,9 @@ export class BillFillBaseModel {
     //备注
     note: string;
     //标签
-    tags: string;
+    tags: Array<any> = [];
     //影像系统类型
-    imageSystemType: Array<any> = [];
+    imageSystemType: string;
 
     constructor() {
     }
