@@ -19,13 +19,13 @@ export class FillBillForTravelPage {
 
     travelModel: BillFillTravelModel = new BillFillTravelModel();
 
-    travelType: string = '打车';
+    travelType: string = '出租车';
     travelTypeList = [
-        {icon: 'ios-car', name: '打车', value: '打车', iconStyle: {color: '#f53d3d'}},
-        {icon: 'ios-subway', name: '公交', value: '公交', iconStyle: {color: '#03c0ff'}},
+        {icon: 'ios-car', name: '出租车', value: '出租车', iconStyle: {color: '#f53d3d'}},
+        {icon: 'ios-subway', name: '公共交通', value: '公共交通', iconStyle: {color: '#03c0ff'}},
         {icon: 'ios-train', name: '火车', value: '火车', iconStyle: {color: '#2ec95c'}},
         {icon: 'ios-plane', name: '飞机', value: '飞机', iconStyle: {color: '#03c0ff'}},
-        {icon: 'ios-bus', name: '长途汽车', value: '长途汽车', iconStyle: {color: 'mediumorchid'}},
+        {icon: 'ios-bus', name: '长途巴士', value: '长途巴士', iconStyle: {color: 'mediumorchid'}},
         {icon: 'ios-car', name: '轮船', value: '轮船', iconStyle: {color: 'coral'}},
         {icon: 'ios-apps', name: '其他', value: '其他', iconStyle: {color: 'dodgerblue'}}
     ];

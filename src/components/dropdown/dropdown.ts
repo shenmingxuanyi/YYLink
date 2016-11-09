@@ -70,7 +70,7 @@ export class DropownComponent implements OnInit {
         this.onSelect.emit($event);
         if (this.type == 'grid') {
             this.value = dataItem.value;
-            this.ionChange($event);
+            this.ionChange(dataItem.value);
         }
     }
 
