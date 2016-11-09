@@ -86,7 +86,7 @@ export class DropownComponent implements OnInit {
             let splitIndex = [];
             for (let i = 0, n = dropdownList.length; i < n; i++) {
                 splitIndex.push(dropdownList[i]);
-                if (i % 3 == 0 && i > 0) {
+                if ((i + 1) % 3 == 0 && i > 0) {
                     splitDropdownList.push(splitIndex);
                     splitIndex = [];
                 }
