@@ -24,98 +24,11 @@
             <ion-input type="number" placeholder="请输入报销金额" clearInput></ion-input>
         </ion-item>
 
-        <ion-item no-lines style="background-color: #fff">
+        <ion-item-divider no-lines style="background-color: #fff">
             <p>交通工具</p>
-        </ion-item>
+        </ion-item-divider>
 
-        <ion-grid class="grid-select" no-padding>
-
-            <ion-row [hidden]="postTypeSelectFlag">
-                <ion-col no-padding text-center>
-                    <button grid-button no-lines ion-item text-center detail-none (click)="postTypeSelectFlag=true;">
-
-                        <ion-icon [ngStyle]="{color: postType.color}" [name]="postType.icon"></ion-icon>
-                        <h3>{{postType.name}}</h3>
-
-                    </button>
-                </ion-col>
-            </ion-row>
-
-            <div [hidden]="!postTypeSelectFlag">
-
-                <ion-row>
-                    <ion-col no-padding text-center width-33>
-                        <button grid-button no-lines ion-item text-center detail-none
-                                (click)="choicePostType({icon: 'ios-car',name: '打车',color: '#f53d3d'})">
-
-                            <ion-icon style="color: #f53d3d;" name="ios-car"></ion-icon>
-                            <h3>打车</h3>
-
-                        </button>
-                    </ion-col>
-                    <ion-col no-padding text-center width-33>
-                        <button grid-button no-lines ion-item text-center detail-none
-                                (click)="choicePostType({icon: 'ios-subway',name: '公交',color: '#03c0ff'})">
-
-                            <ion-icon style="color: #03c0ff" name="ios-subway"></ion-icon>
-                            <h3>公交</h3>
-
-                        </button>
-                    </ion-col>
-                    <ion-col no-padding text-center width-33>
-                        <button grid-button no-lines ion-item text-center detail-none
-                                (click)="choicePostType({icon: 'ios-train',name: '火车',color: '#2ec95c'})">
-
-                            <ion-icon style="color: #2ec95c;" name="ios-train"></ion-icon>
-                            <h3>火车</h3>
-
-                        </button>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col no-padding text-center width-33>
-                        <button grid-button no-lines ion-item text-center detail-none
-                                (click)="choicePostType({icon: 'ios-plane',name: '飞机',color: '#03c0ff'})">
-
-                            <ion-icon style="color:#03c0ff;" name="ios-plane"></ion-icon>
-                            <h3>飞机</h3>
-
-                        </button>
-                    </ion-col>
-                    <ion-col no-padding text-center width-33>
-                        <button grid-button no-lines ion-item text-center detail-none
-                                (click)="choicePostType({icon: 'ios-bus',name: '长途汽车',color: 'mediumorchid'})">
-
-                            <ion-icon style="color:mediumorchid" name="ios-bus"></ion-icon>
-                            <h3>长途汽车</h3>
-
-                        </button>
-                    </ion-col>
-                    <ion-col no-padding text-center width-33>
-                        <button grid-button no-lines ion-item text-center detail-none
-                                (click)="choicePostType({icon: 'ios-car',name: '轮船',color: 'coral'})">
-
-                            <ion-icon style="color: coral;" name="ios-car"></ion-icon>
-                            <h3>轮船</h3>
-
-                        </button>
-                    </ion-col>
-                </ion-row>
-                <ion-row>
-                    <ion-col no-padding text-center width-33>
-                        <button grid-button no-lines ion-item text-center detail-none
-                                (click)="choicePostType({icon: 'ios-apps',name: '其他',color: 'dodgerblue'})">
-
-                            <ion-icon style="color:dodgerblue;" name="ios-apps"></ion-icon>
-                            <h3>其他</h3>
-
-                        </button>
-                    </ion-col>
-                </ion-row>
-
-            </div>
-
-        </ion-grid>
+        <dropdown type="grid" [dataList]="travelTypeList" [(value)]="travelType"></dropdown>
 
         <ion-grid no-padding>
 
