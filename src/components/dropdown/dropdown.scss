@@ -1,3 +1,14 @@
 dropdown {
 
+  [grid-button] {
+
+    &.activated {
+      background-color: rgba(0, 0, 0, .05);
+    }
+
+    ion-icon {
+      font-size: 3.3rem;
+    }
+  }
+
 }

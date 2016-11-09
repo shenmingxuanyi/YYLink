@@ -1,18 +1,56 @@
-<button ion-item (click)="triggerDropdown();" [disabled]="disabled" detail-none>
-    <ion-icon [color]="selectColor" [name]="viewValue?.icon" item-left></ion-icon>
-    {{viewValue?.name}}
-    <ion-icon [color]="selectColor" [name]="!!open?'ios-arrow-dropup':'ios-arrow-dropdown'"
-              item-right></ion-icon>
-</button>
+<div *ngIf="type=='list'">
+    <button ion-item (click)="triggerDropdown();" [disabled]="disabled" detail-none>
+        <ion-icon [color]="selectColor" [name]="viewValue?.icon" item-left></ion-icon>
+        {{viewValue?.name}}
+        <ion-icon [color]="selectColor" [name]="!!open?'ios-arrow-dropup':'ios-arrow-dropdown'"
+                  item-right></ion-icon>
+    </button>
 
-<ion-list [hidden]="!open" (ionChange)="ionChange($event)" [(ngModel)]="value" radio-group>
+    <ion-list [hidden]="!open" (ionChange)="ionChange($event)" [(ngModel)]="value" radio-group>
 
-    <ion-item *ngFor="let dataItem of dataList">
-        <ion-icon [color]="color" [name]="dataItem?.icon" item-left></ion-icon>
-        <ion-label>{{dataItem?.name}}</ion-label>
-        <ion-radio [color]="dataItem?.valuevalue==value?selectColor:color" [value]="dataItem?.value"
-                   (ionSelect)="ionSelect($event,dataItem)"></ion-radio>
-    </ion-item>
+        <ion-item *ngFor="let dataItem of dataList">
+            <ion-icon [ngStyle]="dataItem?.iconStyle" [color]="color" [name]="dataItem?.icon" item-left></ion-icon>
+            <ion-label>{{dataItem?.name}}</ion-label>
+            <ion-radio [color]="dataItem?.value==value?selectColor:color" [value]="dataItem?.value"
+                       (ionSelect)="ionSelect($event,dataItem)"></ion-radio>
+        </ion-item>
 
-</ion-list>
+    </ion-list>
+</div>
+<div *ngIf="type=='grid'">
+    <ion-grid no-padding>
 
+        <ion-row [hidden]="open">
+            <ion-col no-padding text-center>
+                <button grid-button no-lines ion-item text-center detail-none [disabled]="disabled"
+                        (click)="triggerDropdown();">
+
+                    <ion-icon [ngStyle]="viewValue?.iconStyle" [color]="selectColor"
+                              [name]="viewValue?.icon"></ion-icon>
+                    <h3>{{viewValue?.name}}</h3>
+
+                </button>
+            </ion-col>
+        </ion-row>
+
+        <div [hidden]="!open">
+
+            <ion-row *ngFor="let rowList of split(dataList)">
+                <ion-col no-padding text-center width-33 *ngFor="let dataItem of rowList">
+
+                    <button grid-button no-lines ion-item text-center detail-none
+                            (click)="ionSelect($event,dataItem)">
+
+                        <ion-icon [ngStyle]="dataItem?.iconStyle" [color]="color" [name]="dataItem?.icon"></ion-icon>
+                        <h3>{{dataItem?.name}}</h3>
+
+                    </button>
+
+                </ion-col>
+            </ion-row>
+
+
+        </div>
+
+    </ion-grid>
+</div>

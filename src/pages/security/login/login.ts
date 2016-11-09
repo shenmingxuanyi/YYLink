@@ -19,6 +19,7 @@ export class LoginPage {
     }
 
     ionViewDidLoad() {
+        this.userService.clearUser();
         this.userService.getLastUserName()
             .then((lastUsername)=> {
                 this.phone = lastUsername;

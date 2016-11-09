@@ -21,7 +21,8 @@ export class FillBillForTravelPage {
     postType = {
         icon: 'ios-car',
         name: '打车',
-        color: '#f53d3d'
+        color: '#f53d3d',
+        value: '打车'
     };
 
     dateTime: string = '2016-10-10'

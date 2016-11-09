@@ -69,6 +69,11 @@ export class UserService {
         if (this.userTokenInfo && this.userInfo) {
             this.httpResourceService.get(RESTFUL_RESOURCE_ENDPOINT + RESTFUL_RESOURCES.SECURITY.LOGOUT, null, false, false).subscribe()
         }
+        this.clearUser();
+        this.events.publish(SYSTEM_EVENTS.SECURITY.LOGOUT, null);
+    }
+
+    clearUser() {
         this.storage.remove(LOCAL_STORAGE_KEY.USER.USER_INFO);
         if (this.userInfo) {
             this.storage.remove(this.userInfo['phone'] + ":" + LOCAL_STORAGE_KEY.USER.USER_TOKEN_INFO);
@@ -77,7 +82,6 @@ export class UserService {
         this.userTokenInfo = null;
         this.httpResourceService.requestOptionsArgs.headers.set("Authority", null);
         this.httpResourceService.requestOptionsArgs.search = new URLSearchParams();
-        this.events.publish(SYSTEM_EVENTS.SECURITY.LOGOUT, null);
     }
 
     queryUserInfo(): Observable<any> {

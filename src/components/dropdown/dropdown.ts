@@ -1,17 +1,13 @@
 import {Component, Input, EventEmitter, Output, OnInit} from '@angular/core';
 
-/*
- Generated class for the Dropdown component.
-
- See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- for more info on Angular 2 Components.
- */
 @Component({
     selector: 'dropdown',
     templateUrl: 'dropdown.html'
 })
-
 export class DropownComponent implements OnInit {
+
+    @Input()
+    type: string = 'list';
 
     @Input()
     dataList: Array<DropdownItem>;
@@ -72,7 +68,10 @@ export class DropownComponent implements OnInit {
         this.viewValue = dataItem;
         this.open = false;
         this.onSelect.emit($event);
-
+        if (this.type == 'grid') {
+            this.value = dataItem.value;
+            this.ionChange($event);
+        }
     }
 
     ionChange = ($event)=> {
@@ -80,6 +79,24 @@ export class DropownComponent implements OnInit {
         this.onChange.emit($event);
     }
 
+    split(dropdownList: Array<DropdownItem>) {
+        let splitDropdownList = [];
+
+        if (dropdownList && dropdownList.length > 0) {
+            let splitIndex = [];
+            for (let i = 0, n = dropdownList.length; i < n; i++) {
+                splitIndex.push(dropdownList[i]);
+                if (i % 3 == 0 && i > 0) {
+                    splitDropdownList.push(splitIndex);
+                    splitIndex = [];
+                }
+            }
+            if (splitIndex.length > 0) {
+                splitDropdownList.push(splitIndex);
+            }
+        }
+        return splitDropdownList;
+    }
 
 }
 
@@ -87,4 +104,6 @@ interface DropdownItem {
     name?: string;
     value?: any;
     icon?: string;
+    color?: string,
+    iconStyle?: string
 }
