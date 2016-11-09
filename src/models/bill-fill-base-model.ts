@@ -10,7 +10,7 @@ export class BillFillBaseModel {
     //标签
     tags: string;
     //影像系统类型
-    imageSystemType: string;
+    imageSystemType: Array<any> = [];
 
     constructor() {
     }
